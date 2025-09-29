@@ -1,4 +1,5 @@
-SRCS= main.c
+SRCS= src/main.c \
+	  src/validate_map.c
 
 NAME = cub3d
 CC = cc
@@ -8,33 +9,39 @@ RESET = \033[0m
 OBJS = $(SRCS:.c=.o)
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
-INCLUDES =
+INCLUDES = -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) 
+
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 HEADER = "\
+\n\
 $(PINK)▞▀▖▌ ▌▛▀▖ ▞▀▖▛▀▖\n\
 ▌  ▌ ▌▙▄▘  ▄▘▌ ▌\n\
 ▌ ▖▌ ▌▌ ▌ ▖ ▌▌ ▌\n\
-▝▀ ▝▀ ▀▀  ▝▀ ▀▀$(RESET)\n"
+▝▀ ▝▀ ▀▀  ▝▀ ▀▀$(RESET)\n\
+\n"
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	@cd $(MLX_DIR) && $(MAKE) > /dev/null 2>&1
-	@$(CC) $(CFLAGS) $(OBJS) -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -o $(NAME) > /dev/null 2>&1
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) > /dev/null 2>&1
 	@printf $(HEADER)
 
-%.o: %.c $(INCLUDES)
-	@$(CC) $(CFLAGS) -c $< -o $@ > /dev/null 2>&1
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
+
+%.o: %.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@cd $(MLX_DIR) && $(MAKE) clean > /dev/null 2>&1
+	@cd $(MLX_DIR) && $(MAKE) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean
 	@rm -f $(OBJS)
-	@echo "cleaned"
 
-fclean:
-	@rm -f $(OBJS) $(NAME)
-	@echo "fully clean"
+fclean: clean
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: clean fclean all re
