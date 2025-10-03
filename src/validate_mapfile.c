@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate_mapfile.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 13:16:57 by claudia           #+#    #+#             */
-/*   Updated: 2025/09/30 10:30:56 by claudia          ###   ########.fr       */
+/*   Created: 2025/09/29 13:17:54 by claudia           #+#    #+#             */
+/*   Updated: 2025/09/30 15:03:56 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int ac, char **av)
+int	validate_file(char *filename)
 {
-    t_congif cfg;
-    
-    if (ac != 2)
-    {
-        printf("error: use: ./cub3d <mapa.cub>\n");
-        return (1);
-    }
-    if (validate_map(av[1]) == -1)
-    {
-        printf("error: invalid map\n");
-        return (1);
-    }
-    if (parse_cub(av[1], &cfg) == -1)
-        return(1);
-    return (0);
+	int	len;
+	
+	len = ft_strlen(filename);
+	
+	if (len < 4)
+		return (-1);
+	if (ft_strncmp(filename + len - 4, ".cub", 4) == 0) // filename apunta a .
+		return (0);
+	return (-1);
+}
+
+int validate_map(char *map)
+{
+	if (validate_file(map) == -1)
+		return (-1);
+	if (check_open(map) == -1)
+	{
+		printf("error: could not open file\n");
+		return (-1);
+	}
+	return (0);
 }

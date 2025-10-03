@@ -1,5 +1,7 @@
 SRCS= src/main.c \
-	  src/validate_map.c
+	  src/validate_mapfile.c \
+	  src/utils.c \
+	  parsing.c 
 
 NAME = cub3d
 CC = cc
@@ -9,10 +11,11 @@ RESET = \033[0m
 OBJS = $(SRCS:.c=.o)
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
-INCLUDES = -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) 
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
+INCLUDES = -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) 
 
 HEADER = "\
 \n\
