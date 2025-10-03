@@ -1,7 +1,8 @@
 SRCS= src/main.c \
 	  src/validate_mapfile.c \
 	  src/utils.c \
-	  parsing.c 
+	  src/parsing.c \
+	  maps/map.cub
 
 NAME = cub3d
 CC = cc

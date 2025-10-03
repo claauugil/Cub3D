@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate_mapfile.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:17:54 by claudia           #+#    #+#             */
-/*   Updated: 2025/09/30 15:03:56 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/03 12:04:33 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// revisa que termine en .cub
 int	validate_file(char *filename)
 {
 	int	len;

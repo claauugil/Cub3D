@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 09:59:05 by claudia           #+#    #+#             */
-/*   Updated: 2025/09/30 18:18:40 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/03 12:37:28 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ int check_open(char *path)
     return (0);  
 }
 
-void free_and_error(char **lines, const char *msg)
+int free_and_error(char **lines, const char *msg)
 {
     if(lines)
         free_split(lines);
-   printf("%s\n");
-   exit(1); 
+    printf("%s\n", msg);
+    return (-1);
+}
+
+int ft_print_error(char *error)
+{
+    printf("%s\n", error);
+    return (1);
 }
 
 void free_split(char **array)
