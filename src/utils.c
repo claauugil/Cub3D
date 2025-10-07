@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 09:59:05 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/03 12:37:28 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/07 12:33:37 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int check_open(char *path)
 
     fd = open(path, O_RDONLY);
     if (fd < 0)
+    {
+        printf("Error: couldn't open file\n");
         return (-1);
+    }
     close(fd);
     return (0);  
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/03 12:31:37 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/03 15:17:24 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		parse_cub(char *map, t_congif *cfg);
 void	free_split(char **array);
 int 	ft_print_error(char *error);
 int		free_and_error(char **lines, const char *msg);
+char	**read_all_lines(char *map);
 ///////////////gnl///////////////////////////////////////////////////
 char	*get_next_line(int fd);
 char	*concat_line(char **store, char *buffer);
