@@ -6,11 +6,32 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/07 17:15:22 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/08 15:58:11 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int is_map_line(char *line)
+{
+	int	j;
+
+	j = 0;
+	while (line[j] == ' ')
+		j++;
+	return (line[j] == '1' || line[j] == '0');
+}
+
+static int is_texture_line(char *line)
+{
+	return (!ft_strncmp(line, "NO", 3) || !ft_strncmp(line, "SO", 3)
+		|| !ft_strncmp(line, "WE", 3) || !ft_strncmp(line, "EA", 3));
+}
+
+static int is_color_line(char *line)
+{
+	return (!ft_strncmp(line, "F", 2) || !ft_strncmp(line, "C", 2));
+}
 
 int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 {
@@ -56,25 +77,4 @@ int check_texture(char *line, t_congif *cfg)
 	{
 		
 	}
-}
-
-static int is_map_line(char *line)
-{
-	int	j;
-
-	j = 0;
-	while (line[j] == ' ')
-		j++;
-	return (line[j] == '1' || line[j] == '0');
-}
-
-static int is_texture_line(char *line)
-{
-	return (!ft_strncmp(line, "NO", 3) || !ft_strncmp(line, "SO", 3)
-		|| !ft_strncmp(line, "WE", 3) || !ft_strncmp(line, "EA", 3));
-}
-
-static int is_color_line(char *line)
-{
-	return (!ft_strncmp(line, "F", 2) || !ft_strncmp(line, "C", 2));
 }

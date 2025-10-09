@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/03 15:17:24 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/08 15:47:54 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	free_split(char **array);
 int 	ft_print_error(char *error);
 int		free_and_error(char **lines, const char *msg);
 char	**read_all_lines(char *map);
+int		handle_headers(char **lines, t_congif *cfg, int *map_start);
+int		check_texture(char *line, t_congif *cfg);
+int		handle_headers(char **lines, t_congif *cfg, int *map_start);
 ///////////////gnl///////////////////////////////////////////////////
 char	*get_next_line(int fd);
 char	*concat_line(char **store, char *buffer);
