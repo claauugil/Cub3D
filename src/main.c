@@ -6,7 +6,7 @@
 /*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:16:57 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/03 12:42:07 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/09 12:48:18 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int main(int ac, char **av)
     if (validate_map(av[1]) == -1)
         return (ft_print_error("error: invalid map\n"));
     if (parse_cub(av[1], &cfg) == -1)
-        return (ft_print_error("error: parsing failed"));
+        return (ft_print_error("error: parsing failed :(((("));
     return (0);
 }

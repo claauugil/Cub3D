@@ -3,6 +3,8 @@ SRCS= src/main.c \
 	  src/utils.c \
 	  src/parsing.c \
 	  src/parse_headers.c \
+	  src/check_textures.c \
+	  gnl/get_next_line.c \
 
 NAME = cub3d
 CC = cc
@@ -29,23 +31,23 @@ $(PINK)▞▀▖▌ ▌▛▀▖ ▞▀▖▛▀▖\n\
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@cd $(MLX_DIR) && $(MAKE) > /dev/null 2>&1
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) > /dev/null 2>&1
-	@printf $(HEADER)
+	cd $(MLX_DIR) && $(MAKE) 
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
+	printf $(HEADER)
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
+	$(MAKE) -C $(LIBFT_DIR) 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@cd $(MLX_DIR) && $(MAKE) clean
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@rm -f $(OBJS)
+	cd $(MLX_DIR) && $(MAKE) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
+	rm -f $(OBJS)
 
 fclean: clean
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	rm -f $(NAME)
 
 re: fclean all

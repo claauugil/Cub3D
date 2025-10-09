@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 09:59:05 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/07 12:33:37 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/09 11:24:15 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int check_open(char *path)
-{
-    int fd;
-
-    fd = open(path, O_RDONLY);
-    if (fd < 0)
-    {
-        printf("Error: couldn't open file\n");
-        return (-1);
-    }
-    close(fd);
-    return (0);  
-}
 
 int free_and_error(char **lines, const char *msg)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/08 15:49:16 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/09 12:52:59 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	parse_cub(char *map, t_congif *cfg)
 		return (free_and_error(NULL, "error: incorrect map\n"));
 	rm_empty_lines(lines);
 	if (handle_headers(lines, cfg, &map_start) == -1) // parse headers textures/colors
+	{
+		printf("no texture files provided\n");
 		return (free_and_error(lines, "error: invalid headers"));
+	}
 	/*if (handle_map(lines, cfg, &map_start) == -1) // parse and check map from map_start
 		return (free_and_error(lines, "invalid map"));*/
 	free_split(lines);
@@ -53,7 +56,6 @@ static void rm_empty_lines(char **lines)
 
 	i = 0;
 	j = 0;
-	
 	while (lines[i])
 	{
 		if (!is_line_empty(lines[i])) // line is not empty
@@ -95,15 +97,12 @@ char **read_all_lines(char *map)
 	num_lines = count_lines(map);
 	if (num_lines <= 0)
 		return (NULL);
-		
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-		
 	lines = malloc(sizeof(char *) * (num_lines + 1));
 	if (!lines)
 		return (NULL);
-	
 	i = 0;
 	while ((line = get_next_line(fd)))
 		lines[i++] = line;

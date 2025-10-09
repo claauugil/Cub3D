@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_headers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/08 15:58:11 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/09 12:54:21 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static int is_texture_line(char *line)
 		|| !ft_strncmp(line, "WE", 3) || !ft_strncmp(line, "EA", 3));
 }
 
-static int is_color_line(char *line)
+/*static int is_color_line(char *line)
 {
 	return (!ft_strncmp(line, "F", 2) || !ft_strncmp(line, "C", 2));
-}
+}*/
 
 int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 {
@@ -53,28 +53,18 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 				return (-1);
 			headers++;
 		}
-		else if (is_color_line(lines[i]))
+		/*else if (is_color_line(lines[i]))
 		{
 			if (check_color(lines[i], cfg) == -1)
 				return (-1);
 			headers++;
-		}
+		}*/
 		else if (lines[i][0] != '\0')
 			return (-1);
 		i++;
 	}
-	if (headers < 6)
-		return (-1);
+	/*if (headers != 6)
+		return (-1);*/
 	return (0);
 }
 
-int check_texture(char *line, t_congif *cfg)
-{
-	int i; 
-
-	i = 0;
-	while (line[i])
-	{
-		
-	}
-}
