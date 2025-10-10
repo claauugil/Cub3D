@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_headers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/09 12:54:21 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/09 14:44:17 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 	headers = 0;
 	while(lines[i])
 	{
+		printf("Line %d: '%s'\n", i, lines[i]);
 		if (is_map_line(lines[i]))
 		{
 			*map_start = i;
