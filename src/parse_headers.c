@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_headers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/09 14:44:17 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/10 13:18:32 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static int is_map_line(char *line)
 
 static int is_texture_line(char *line)
 {
-	return (!ft_strncmp(line, "NO", 3) || !ft_strncmp(line, "SO", 3)
-		|| !ft_strncmp(line, "WE", 3) || !ft_strncmp(line, "EA", 3));
+	return (ft_strncmp(line, "NO", 3)  == 0 || 
+			ft_strncmp(line, "SO", 3) == 0 ||
+			ft_strncmp(line, "WE", 3) == 0 ||
+			ft_strncmp(line, "EA", 3) == 0);
 }
 
 /*static int is_color_line(char *line)
@@ -42,7 +44,6 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 	headers = 0;
 	while(lines[i])
 	{
-		printf("Line %d: '%s'\n", i, lines[i]);
 		if (is_map_line(lines[i]))
 		{
 			*map_start = i;
@@ -60,8 +61,8 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 				return (-1);
 			headers++;
 		}*/
-		else if (lines[i][0] != '\0')
-			return (-1);
+		/*else if (lines[i][0] != '\0')
+			return (-1);*/
 		i++;
 	}
 	/*if (headers != 6)

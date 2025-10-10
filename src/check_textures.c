@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/09 13:49:08 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/10 12:17:50 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int check_texture(char *line, t_congif *cfg)
 	int		ret;
 
 	split = ft_split(line, ' ');
-	if (!split || !split[0] || !split[1] || split[2])
+	if (!split || !split[0] || !split[1] || split[2]) 
 		return(free_split(split), -1);
     if (validate_file(split[1]) == -1)
     {
@@ -64,7 +64,7 @@ int check_texture(char *line, t_congif *cfg)
 		free_split(split);
 		return(ft_print_error("Error: invalid texture\n"), -1);
 	}
-    printf("Parsing texture: '%s' -> '%s'\n", split[0], split[1]);
+    //printf("Parsing texture: '%s' -> '%s'\n", split[0], split[1]);
 	close(fd);
 	ret = save_textures(cfg, split[0], split[1]);
 	free_split(split);

@@ -8,7 +8,7 @@ SRCS= src/main.c \
 
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -no-pie
+CFLAGS = -Wall -Wextra -Werror
 PINK = \033[38;2;245;166;221m
 RESET = \033[0m
 OBJS = $(SRCS:.c=.o)

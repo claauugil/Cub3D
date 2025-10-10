@@ -6,7 +6,7 @@
 /*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:17:54 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/09 13:00:08 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/10 12:34:54 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	validate_file(char *filename)
 	int	len;
 	
 	len = ft_strlen(filename);
-	
-	if (len < 4)
+	if (len <= 9)
 		return (-1);
 	if (ft_strncmp(filename + len - 4, ".cub", 4) == 0
-		|| ft_strncmp(filename + len - 4, ".xpm", 4)) // filename apunta a .
+		|| ft_strncmp(filename + len - 4, ".xpm", 4) == 0) // filename apunta a .
 		return (0);
 	return (-1);
 }
@@ -43,6 +42,7 @@ int check_open(char *path)
 
 int validate_map(char *map)
 {
+	
 	if (validate_file(map) == -1)
 		return (-1);
 	if (check_open(map) == -1)
