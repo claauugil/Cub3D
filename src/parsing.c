@@ -6,7 +6,7 @@
 /*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/10 10:52:18 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/10 15:25:10 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	parse_cub(char *map, t_congif *cfg)
 		return (free_and_error(NULL, "error: incorrect map\n"));
 	rm_empty_lines(lines);
 	if (handle_headers(lines, cfg, &map_start) == -1) // parse headers textures/colors
-	{
-		printf("no texture files provided\n");
 		return (free_and_error(lines, "error: invalid headers"));
-	}
 	/*if (handle_map(lines, cfg, &map_start) == -1) // parse and check map from map_start
 		return (free_and_error(lines, "invalid map"));*/
 	free_split(lines);
@@ -58,8 +55,8 @@ static void rm_empty_lines(char **lines)
 	j = 0;
 	while (lines[i])
 	{
-		if (!is_line_empty(lines[i]))
-			lines[j++] = lines[i];
+		if (!is_line_empty(lines[i])) // line is not empty
+			lines[j++] = lines[i]; // copy line
 		else
 			free(lines[i]);
 		i++;
@@ -88,9 +85,8 @@ static int count_lines(const char *file)
 
 char **read_all_lines(char *map)
 {
-    int 	fd;
-	int		len;
-	int		i;
+	int		fd;
+	int		i = 0;
 	char	*line;
 	char	**lines;
 
@@ -100,15 +96,14 @@ char **read_all_lines(char *map)
 	lines = malloc(sizeof(char *) * (count_lines(map) + 1));
 	if (!lines)
 		return (close(fd), NULL);
-	i = 0;
 	while ((line = get_next_line(fd)))
 	{
-		len = ft_strlen(line);
-		if (len > 0 && line[len - 1] == '\n')
-			line[len - 1 ] = '\0';
+		int len = ft_strlen(line);
+		if (len && line[len - 1] == '\n')
+			line[len - 1] = '\0';
 		lines[i++] = line;
 	}
-	lines[i++] = NULL;
+	lines[i] = NULL;
 	close(fd);
 	return (lines);
 }
