@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/08 15:47:54 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/13 18:11:50 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_config
 	char	*tex_we;
 	char	*tex_ea;
 	int		floor_rgb[3];
-	int		ceiling_rg[3];
+	int		ceiling_rgb[3];
 	char	**map;
 	int		map_width;
 	int		map_height;
@@ -54,6 +54,8 @@ char	**read_all_lines(char *map);
 int		handle_headers(char **lines, t_congif *cfg, int *map_start);
 int		check_texture(char *line, t_congif *cfg);
 int		handle_headers(char **lines, t_congif *cfg, int *map_start);
+void	free_cfg(t_congif *cfg);
+int		check_color(char *line, t_congif *cfg);
 ///////////////gnl///////////////////////////////////////////////////
 char	*get_next_line(int fd);
 char	*concat_line(char **store, char *buffer);

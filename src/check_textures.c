@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/10 15:57:12 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/14 12:37:50 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@ int check_texture(char *line, t_congif *cfg)
 	if (fd < 0)
 	{
 		free_split(split);
-		return(ft_print_error("Error: invalid texture"), -1);
+		return(ft_print_error("Error: invalid texture"));
 	}
 	close(fd);
-   // printf("split[0]='%s', split[1]='%s'\n", split[0], split[1]);
 	ret = save_textures(cfg, split[0], split[1]);
 	free_split(split);
 	return ((ret));

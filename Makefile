@@ -4,6 +4,7 @@ SRCS= src/main.c \
 	  src/parsing.c \
 	  src/parse_headers.c \
 	  src/check_textures.c \
+	  src/parse_header_utils.c \
 	  gnl/get_next_line.c \
 
 NAME = cub3d

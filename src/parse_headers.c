@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_headers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/10 15:56:19 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/14 10:41:56 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static int is_map_line(char *line)
 		j++;
 	return (line[j] == '1' || line[j] == '0');
 }
-
 static int is_texture_line(char *line)
 {
     while (*line == ' ')
@@ -66,8 +65,8 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 		}
 		else if (is_color_line(lines[i]))
 		{
-			/*if (check_color(lines[i], cfg) == -1)
-				return (-1);*/
+			if (check_color(lines[i], cfg) == -1)
+				return (-1);
 			headers++;
 		}
 		else
