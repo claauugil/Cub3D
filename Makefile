@@ -7,6 +7,9 @@ SRCS= src/main.c \
 	  src/parsing/headers/parse_header_utils.c \
 	  src/parsing/map/handle_map.c \
 	  gnl/get_next_line.c \
+	  src/init_game.c \
+	  src/render.c \
+	  src/raycasting.c \
 
 NAME = cub3d
 CC = cc

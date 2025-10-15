@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/15 10:45:53 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 13:30:51 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void rm_empty_lines(char **lines);
 
 
-int	parse_cub(char *map, t_congif *cfg)
+int	parse_cub(char *map, t_config *cfg)
 {
 	char	**lines;
 	int		map_start;

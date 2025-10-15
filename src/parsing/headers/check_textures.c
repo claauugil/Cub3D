@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/14 12:37:50 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 13:26:52 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int save_textures(t_congif *cfg, char *coord, char *path)
+static int save_textures(t_config *cfg, char *coord, char *path)
 {
     if (ft_strncmp(coord, "NO", 3) == 0)
     {
@@ -43,7 +43,7 @@ static int save_textures(t_congif *cfg, char *coord, char *path)
     return (0);
 }
 
-int check_texture(char *line, t_congif *cfg)
+int check_texture(char *line, t_config *cfg)
 {
 
 	char	**split;

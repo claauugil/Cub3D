@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_header_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:09:38 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/14 11:12:43 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 13:26:42 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int save_color(char id, t_congif *cfg, int rgb[3])
+static int save_color(char id, t_config *cfg, int rgb[3])
 {
 	int	i;
 	
@@ -81,7 +81,7 @@ static int	parse_color_line(char *line, int rgb[3])
 	return (0);
 }
 
-int check_color(char *line, t_congif *cfg)
+int check_color(char *line, t_config *cfg)
 {
 	char	id;
 	int		rgb[3];

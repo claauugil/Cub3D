@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_headers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/15 10:42:04 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 13:27:06 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int is_color_line(char *line)
 	return (0);
 }
 
-int	handle_headers(char **lines, t_congif *cfg, int *map_start)
+int	handle_headers(char **lines, t_config *cfg, int *map_start)
 {
     int	i;
 	int	headers;
