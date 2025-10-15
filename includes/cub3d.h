@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/15 10:41:24 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 16:16:00 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int		check_texture(char *line, t_congif *cfg);
 int		handle_headers(char **lines, t_congif *cfg, int *map_start);
 void	free_cfg(t_congif *cfg);
 int		check_color(char *line, t_congif *cfg);
-int handle_map(char **lines, t_congif *cfg, int map_start);
+int		handle_map(char **lines, t_congif *cfg, int map_start);
+int 	check_headers(char *line, t_congif *cfg, int *headers);
 ///////////////gnl///////////////////////////////////////////////////
 char	*get_next_line(int fd);
 char	*concat_line(char **store, char *buffer);

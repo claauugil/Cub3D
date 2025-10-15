@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/15 15:27:15 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 16:15:40 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int is_color_line(char *line)
 	return (0);
 }
 
-int	handle_headers(char **lines, t_congif *cfg, int *map_start)
+/*int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 {
     int	i;
 	int	headers;
@@ -81,6 +81,52 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 		return (ft_print_error("Error: Textures missing"));
 	if (*map_start == -1)
 		return (ft_print_error("Error: no map found"));
+	return (0);
+}*/
+
+
+int	handle_headers(char **lines, t_congif *cfg, int *map_start)
+{
+	int	i;
+	int	headers;
+
+	i = 0;
+	headers = 0;
+	*map_start = -1;
+	while (lines[i])
+	{
+		if (is_map_line(lines[i]))
+		{
+			*map_start = i;
+			break;
+		}
+		else if (check_headers(lines[i], cfg, &headers) == -1)
+			return (-1);
+		i++;
+	}
+	if (headers != 6)
+		return (ft_print_error("Error: Textures missing"));
+	if (*map_start == -1)
+		return (ft_print_error("Error: no map found"));
+	return (0);
+}
+
+int check_headers(char *line, t_congif *cfg, int *headers)
+{
+	if (is_texture_line(line))
+	{
+		if (check_texture(line, cfg) == -1)
+			return (-1);
+		(*headers)++; // valor del entero al que apunta headers
+	}
+	else if (is_color_line(line))
+	{
+		if (check_color(line, cfg) == -1)
+			return (-1);
+		(*headers)++;
+	}
+	else
+		return(ft_print_error("Error: Invalid Identifier"));
 	return (0);
 }
 
