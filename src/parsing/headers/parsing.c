@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/15 09:02:21 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 10:45:53 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void rm_empty_lines(char **lines);
 
-// parse organizer
 
 int	parse_cub(char *map, t_congif *cfg)
 {
@@ -26,16 +25,11 @@ int	parse_cub(char *map, t_congif *cfg)
 	rm_empty_lines(lines);
 	if (handle_headers(lines, cfg, &map_start) == -1) // parse headers textures/colors
 		return (free_and_error(lines, "error: invalid headers"));
-	/*if (handle_map(lines, cfg, &map_start) == -1) // parse and check map from map_start
-		return (free_and_error(lines, "invalid map"));*/
+	if (handle_map(lines, cfg, map_start) == -1) // parse and check map from map_start
+		return (free_and_error(lines, "invalid map"));
 	free_split(lines);
 	return (0);
 }
-
-/*int handle_map(char **line, t_congif *cfg, int *map_start)
-{
-	
-}*/
 static int is_line_empty(char *line)
 {
 	int i;
