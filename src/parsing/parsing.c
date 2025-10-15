@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/10 15:25:10 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/15 09:02:21 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int	parse_cub(char *map, t_congif *cfg)
 	return (0);
 }
 
+/*int handle_map(char **line, t_congif *cfg, int *map_start)
+{
+	
+}*/
 static int is_line_empty(char *line)
 {
 	int i;

@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/14 10:41:56 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/15 09:24:34 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ static int is_texture_line(char *line)
 
 static int is_color_line(char *line)
 {
-    while (*line == ' ')
-        line++;
-    return (*line == 'F' || *line == 'C');
+	while (*line == ' ' || *line == '\t')
+		line++;
+	if ((*line == 'F' || *line == 'C')
+		&& (line[1] == ' ' || line[1] == '\t'))
+		return(1);
+	return (0);
 }
 
 int	handle_headers(char **lines, t_congif *cfg, int *map_start)
