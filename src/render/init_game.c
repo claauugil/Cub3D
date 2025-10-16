@@ -6,7 +6,11 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
+<<<<<<< HEAD:src/render/init_game.c
 /*   Updated: 2025/10/22 12:50:22 by claudia          ###   ########.fr       */
+=======
+/*   Updated: 2025/10/16 12:36:57 by gmaccha-         ###   ########.fr       */
+>>>>>>> 9844dba (update render_frame):src/init_game.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +47,34 @@ void set_player_direction(t_game *game, char dir)
         game->plane_y = -0.66;
     }
 }
+// Cargar las texturas desde archivos XPM
+// -------------------------------------
+void load_textures(t_game *game)
+{
+	t_config *cfg = game->cfg;
+
+    game->tex[0].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_no,
+        &game->tex[0].width, &game->tex[0].height);
+    game->tex[1].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_so,
+        &game->tex[1].width, &game->tex[1].height);
+    game->tex[2].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_we,
+        &game->tex[2].width, &game->tex[2].height);
+    game->tex[3].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_ea,
+        &game->tex[3].width, &game->tex[3].height);
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (!game->tex[i].img)
+        {
+            ft_print_error("Error: texture load failed");
+            exit(1);
+        }
+        game->tex[i].addr = mlx_get_data_addr(game->tex[i].img,
+            &game->tex[i].bpp, &game->tex[i].line_len, &game->tex[i].endian);
+    }
+}
+
+
 
 void load_textures(t_game *game)
 {
@@ -85,8 +117,18 @@ int init_game(t_game *game, t_config *cfg)
 	game->pos_x = cfg->player_x;
 	game->pos_y = cfg->player_y;
 	set_player_direction(game, cfg->player_dir);
+<<<<<<< HEAD:src/render/init_game.c
     mlx_hook(game->win, KeyPress, KeyPressMask, handle_key_press, game);
     mlx_hook(game->win, 17, 0, close_window, game);
     load_textures(game);
+=======
+	
+    // Cargar las texturas
+    load_textures(game); // 👈 aquí
+        
+	// Opcional: velocidades de movimiento/rotación
+   // game->move_speed = 0.05;
+    //game->rot_speed = 0.03;
+>>>>>>> 9844dba (update render_frame):src/init_game.c
 	return (0);
 }
