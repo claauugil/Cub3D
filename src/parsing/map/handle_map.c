@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 19:31:18 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/17 19:34:04 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/18 17:55:31 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int handle_map(char **lines, t_congif *cfg, int map_start)
 		return (-1);
 	if (fill_map(lines + map_start, cfg) == -1)
 		return (-1);
-	/*if (check_map(cfg) == -1)
+	if (check_map(cfg) == -1)
 		return (-1);
-	normalize_map(cfg);*/
+	//normalize_map(cfg);
 	print_arr(cfg);
     return (0);
 }
