@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
 <<<<<<< HEAD:src/render/init_game.c
+<<<<<<< HEAD:src/render/init_game.c
 /*   Updated: 2025/10/22 12:50:22 by claudia          ###   ########.fr       */
 =======
 /*   Updated: 2025/10/16 12:36:57 by gmaccha-         ###   ########.fr       */
 >>>>>>> 9844dba (update render_frame):src/init_game.c
+=======
+/*   Updated: 2025/10/18 15:49:24 by gmaccha-         ###   ########.fr       */
+>>>>>>> 5bb93e5 (update key_press, minimap):src/init_game.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +127,8 @@ int init_game(t_game *game, t_config *cfg)
     load_textures(game);
 =======
 	
+    mlx_hook(game->win, KeyPress, KeyPressMask, handle_key_press, game);
+    mlx_hook(game->win, 17, 0, close_window, game); // Para cerrar con la X
     // Cargar las texturas
     load_textures(game); // 👈 aquí
         

@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:20:29 by gmaccha-          #+#    #+#             */
 <<<<<<< HEAD:src/render/render.c
+<<<<<<< HEAD:src/render/render.c
 /*   Updated: 2025/10/22 12:44:47 by claudia          ###   ########.fr       */
 =======
 /*   Updated: 2025/10/15 20:11:27 by gmaccha-         ###   ########.fr       */
 >>>>>>> 9844dba (update render_frame):src/render.c
+=======
+/*   Updated: 2025/10/18 16:00:21 by gmaccha-         ###   ########.fr       */
+>>>>>>> 5bb93e5 (update key_press, minimap):src/render.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +105,9 @@ void render_frame(t_game *game)
         }
     }
     mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+<<<<<<< HEAD:src/render/render.c
 }
+=======
+    draw_minimap(game);
+}
+>>>>>>> 5bb93e5 (update key_press, minimap):src/render.c
