@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 13:27:45 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 13:34:45 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int	init_game(t_game *game, t_config *cfg);
 void render_frame(t_game *game);
 void draw_background(t_img *img, int ceiling, int floor);
 void put_pixel(t_img *img, int x, int y, int color);
-double cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y, int *side_hit);
+t_ray cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y);
 void load_textures(t_game *game);
 void move_forward(t_game *game);
 void move_backward(t_game *game);

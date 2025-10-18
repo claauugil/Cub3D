@@ -6,7 +6,7 @@
 /*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 15:58:58 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/19 00:55:01 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/19 01:17:31 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,41 @@ void draw_minimap(t_game *game)
     int map_x, map_y;
     int color;
 
-    int offset_x = 30; // posición en pantalla (margen izquierdo)
+    int offset_x = 30; // margen izquierdo
     int offset_y = WIN_H - MINIMAP_SIZE - 30; // margen inferior
     int center_x = offset_x + MINIMAP_RADIUS;
     int center_y = offset_y + MINIMAP_RADIUS;
 
-    // recorrer el mapa pero solo dibujar lo que entra en el radar circular
+    // recorrer el área circular del radar
     for (int y = -MINIMAP_RADIUS; y < MINIMAP_RADIUS; y++)
     {
         for (int x = -MINIMAP_RADIUS; x < MINIMAP_RADIUS; x++)
         {
-            int dx = x;
-            int dy = y;
-
-            // solo dibuja si está dentro del círculo (efecto radar)
-            if ((dx * dx + dy * dy) < (MINIMAP_RADIUS * MINIMAP_RADIUS))
+            // dibuja solo dentro del círculo
+            if ((x * x + y * y) < (MINIMAP_RADIUS * MINIMAP_RADIUS))
             {
+                // calcular posición en el mapa según jugador
                 double world_x = game->pos_x + (double)x / TILE_SIZE;
                 double world_y = game->pos_y + (double)y / TILE_SIZE;
 
                 map_x = (int)world_x;
                 map_y = (int)world_y;
 
-                // verificar si el píxel pertenece al mapa
+                // determinar color según celda del mapa
                 if (map_x >= 0 && map_y >= 0 &&
                     map_y < game->cfg->map_height &&
                     map_x < game->cfg->map_width)
                 {
-                    if (game->cfg->map[map_y][map_x] == '1')
+                    char cell = game->cfg->map[map_y][map_x];
+                    if (cell == '1')
                         color = 0x555555; // pared
+                    else if (cell == 'D')
+                        color = 0x00FF00; // puerta
                     else
-                        color = 0xCCCCCC; // espacio libre
+                        color = 0xCCCCCC; // suelo libre
                 }
                 else
-                    color = 0x000000; // fuera del mapa (negro)
+                    color = 0x000000; // fuera del mapa
 
                 mini_put_pixel(&game->img, center_x + x, center_y + y, color);
             }
@@ -73,7 +74,7 @@ void draw_minimap(t_game *game)
         }
     }
 
-    // dibujar flecha de dirección del jugador
+    // dibujar flecha de dirección
     int end_x = center_x + (int)(game->dir_x * 15);
     int end_y = center_y + (int)(game->dir_y * 15);
 
@@ -81,15 +82,8 @@ void draw_minimap(t_game *game)
     int dy = abs(end_y - center_y);
     int sx, sy;
 
-    if (center_x < end_x)
-        sx = 1;
-    else
-        sx = -1;
-
-    if (center_y < end_y)
-        sy = 1;
-    else
-        sy = -1;
+    if (center_x < end_x) sx = 1; else sx = -1;
+    if (center_y < end_y) sy = 1; else sy = -1;
 
     int err = dx - dy;
     int x0 = center_x;
