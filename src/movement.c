@@ -6,7 +6,7 @@
 /*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:37:37 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/18 15:46:28 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:59:54 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ static int is_valid_cell(t_game *game, double x, double y)
         || map_x >= game->cfg->map_width)
         return (0); // fuera de rango → bloqueado
 
-    if (game->cfg->map[map_y][map_x] == '1')
-        return (0); // muro → bloqueado
+    char cell = game->cfg->map[map_y][map_x];
+
+    if (cell == '1' || cell == 'D')
+        return (0); // muro o puerta cerrada → bloqueado
 
     return (1);
 }

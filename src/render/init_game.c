@@ -8,6 +8,7 @@
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
 <<<<<<< HEAD:src/render/init_game.c
 <<<<<<< HEAD:src/render/init_game.c
+<<<<<<< HEAD:src/render/init_game.c
 /*   Updated: 2025/10/22 12:50:22 by claudia          ###   ########.fr       */
 =======
 /*   Updated: 2025/10/16 12:36:57 by gmaccha-         ###   ########.fr       */
@@ -15,6 +16,9 @@
 =======
 /*   Updated: 2025/10/18 15:49:24 by gmaccha-         ###   ########.fr       */
 >>>>>>> 5bb93e5 (update key_press, minimap):src/init_game.c
+=======
+/*   Updated: 2025/10/19 00:28:05 by gmaccha-         ###   ########.fr       */
+>>>>>>> 89c2067 (update movement, hooks, minimap):src/init_game.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +59,20 @@ void set_player_direction(t_game *game, char dir)
 // -------------------------------------
 void load_textures(t_game *game)
 {
-	t_config *cfg = game->cfg;
+    t_config *cfg = game->cfg;
 
-    game->tex[0].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_no,
-        &game->tex[0].width, &game->tex[0].height);
-    game->tex[1].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_so,
-        &game->tex[1].width, &game->tex[1].height);
-    game->tex[2].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_we,
-        &game->tex[2].width, &game->tex[2].height);
-    game->tex[3].img = mlx_xpm_file_to_image(game->mlx, cfg->tex_ea,
-        &game->tex[3].width, &game->tex[3].height);
+    char *paths[5] = {
+        cfg->tex_no,
+        cfg->tex_so,
+        cfg->tex_we,
+        cfg->tex_ea,
+        "./textures/door.xpm"
+    };
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
+        game->tex[i].img = mlx_xpm_file_to_image(game->mlx, paths[i],
+            &game->tex[i].width, &game->tex[i].height);
         if (!game->tex[i].img)
         {
             ft_print_error("Error: texture load failed");

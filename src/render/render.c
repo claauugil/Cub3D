@@ -8,6 +8,7 @@
 /*   Created: 2025/10/15 13:20:29 by gmaccha-          #+#    #+#             */
 <<<<<<< HEAD:src/render/render.c
 <<<<<<< HEAD:src/render/render.c
+<<<<<<< HEAD:src/render/render.c
 /*   Updated: 2025/10/22 12:44:47 by claudia          ###   ########.fr       */
 =======
 /*   Updated: 2025/10/15 20:11:27 by gmaccha-         ###   ########.fr       */
@@ -15,6 +16,9 @@
 =======
 /*   Updated: 2025/10/18 16:00:21 by gmaccha-         ###   ########.fr       */
 >>>>>>> 5bb93e5 (update key_press, minimap):src/render.c
+=======
+/*   Updated: 2025/10/19 00:23:09 by gmaccha-         ###   ########.fr       */
+>>>>>>> 89c2067 (update movement, hooks, minimap):src/render.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +66,26 @@ void render_frame(t_game *game)
         if (draw_end >= WIN_H) draw_end = WIN_H - 1;
 
         // seleccionar textura según el lado
-        int tex_num;
-        if (side_hit == 0)
-        {
-            if (ray_dir_x > 0)
-                tex_num = 0; // North
-            else
-                tex_num = 1; // South
-        }
-        else // side_hit == 1
-        {
-            if (ray_dir_y > 0)
-                tex_num = 2; // West
-            else
-                tex_num = 3; // East
-        }
+       // seleccionar textura según el lado o si es puerta
+int tex_num;
+char cell = game->cfg->map[(int)(game->pos_y + perp_wall_dist * ray_dir_y)]
+                        [(int)(game->pos_x + perp_wall_dist * ray_dir_x)];
+if (cell == 'D')          // puerta cerrada
+    tex_num = 4;          // textura de puerta
+else if (side_hit == 0)
+{
+    if (ray_dir_x > 0)
+        tex_num = 0; // North
+    else
+        tex_num = 1; // South
+}
+else
+{
+    if (ray_dir_y > 0)
+        tex_num = 2; // West
+    else
+        tex_num = 3; // East
+}
 
         // posición exacta donde golpea la pared
         double wall_x;
@@ -104,6 +113,7 @@ void render_frame(t_game *game)
             put_pixel(&game->img, x, y, color);
         }
     }
+<<<<<<< HEAD:src/render/render.c
     mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 <<<<<<< HEAD:src/render/render.c
 }
@@ -111,3 +121,9 @@ void render_frame(t_game *game)
     draw_minimap(game);
 }
 >>>>>>> 5bb93e5 (update key_press, minimap):src/render.c
+=======
+    draw_minimap(game);
+    mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+    
+}
+>>>>>>> 89c2067 (update movement, hooks, minimap):src/render.c

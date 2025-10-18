@@ -6,7 +6,7 @@
 /*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:48:13 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/18 15:52:58 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/19 00:00:52 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int handle_key_press(int keycode, t_game *game)
         rotate_left(game);
     else if (keycode == XK_Right)
         rotate_right(game);
-
+    else if (keycode == XK_space)
+        toggle_door(game);   // 👈 abrir/cerrar puerta
     render_frame(game); // vuelve a dibujar el frame con la nueva posición
     return (0);
 }
