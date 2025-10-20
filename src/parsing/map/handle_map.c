@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 19:31:18 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/18 17:55:31 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/20 10:44:08 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void print_arr(t_congif *cfg)
 		while (cfg->map[i][j])
 		{
 			if (cfg->map[i][j] == ' ')
-				printf(".");
+				printf("e");
 			else
 				printf("%c", cfg->map[i][j]);
 			j++;

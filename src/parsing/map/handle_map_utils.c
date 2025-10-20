@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/18 15:30:33 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/20 10:41:21 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	validate_map_chars(char **map_lines)
 		{
 			if (map_lines[i][j] != '0' && map_lines[i][j] != '1'&&
 				map_lines[i][j] != 'N' && map_lines[i][j] != 'S' &&
-				map_lines[i][j] != 'W' && map_lines[i][j] != 'E')
+				map_lines[i][j] != 'W' && map_lines[i][j] != 'E' &&
+				map_lines[i][j] != ' ' && map_lines[i][j] != '\t')
 				return (-1);
 			j++;
 		}
