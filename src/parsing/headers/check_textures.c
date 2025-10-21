@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/14 12:37:50 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 11:44:40 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int check_texture(char *line, t_congif *cfg)
     if (validate_file(split[1]) == -1)
     {
         free_split(split);
-        return(ft_print_error("Error: invalid texture file extension"));
+        return (-1);
     }
 	fd = open(split[1], O_RDONLY);
 	if (fd < 0)
 	{
 		free_split(split);
-		return(ft_print_error("Error: invalid texture"));
+        return (-1);
 	}
 	close(fd);
 	ret = save_textures(cfg, split[0], split[1]);

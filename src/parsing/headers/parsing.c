@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/17 11:04:59 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:08:01 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@ int	parse_cub(char *map, t_congif *cfg)
 	int		map_start;
 		
 	if (!(lines = read_all_lines(map))) // read lines gnl
-		return (free_and_error(NULL, "error: incorrect map\n"));
+		return (free_and_error(NULL, "Error\nincorrect map\n"));
 	rm_empty_lines(lines);
 	if (handle_headers(lines, cfg, &map_start) == -1) // parse headers textures/colors
-		return (free_and_error(lines, "error: invalid headers"));
+	{
+		free(lines);
+		return (-1);	
+	}
 	if (handle_map(lines, cfg, map_start) == -1)
-		return (free_and_error(lines, "invalid map"));
+	{
+		free (lines);
+		return (-1);	
+	}
 	free_split(lines);
 	return (0);
 }
@@ -38,7 +44,7 @@ static int is_line_empty(char *line)
 	while (line[i])
 	{
 		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-			return (0); // -> not empty
+			return (0);
 		i++;
 	}
 	return (1);

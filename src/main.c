@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:16:57 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/15 16:15:35 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 11:33:55 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int main(int ac, char **av)
     
     ft_bzero(&cfg, sizeof(t_congif));
     if (ac != 2)
-        return (ft_print_error("error: use as: ./cub3d <mapa.cub>"));
+        return (ft_print_error("Error\nuse as: ./cub3d <mapa.cub>"));
     if (validate_map(av[1]) == -1)
-        return (ft_print_error("error: invalid map"));
+        return (-1);
     if (parse_cub(av[1], &cfg) == -1)
     {   
         free_cfg(&cfg);
