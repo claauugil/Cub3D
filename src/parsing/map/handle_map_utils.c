@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 18:31:08 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 18:59:31 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,61 +62,29 @@ int	validate_map_chars(char **map_lines)
 	return (0);
 }
 
-int	allocate_map(t_congif *cfg)
+static char	*allocate_row(int width)
 {
-	int	i;
-	int	j;
+	int		j;
+	char	*row;
 
-	if (!cfg || cfg->map_height <= 0 || cfg->map_width <= 0)
-		return (-1);
-	cfg->map = malloc(sizeof(char *) * (cfg->map_height + 1));
-	if (!cfg->map)
-		return (-1);
-	i = 0;
-	while (i < cfg->map_height)
+	row = malloc(width + 1);
+	if (!row)
+		return (NULL);
+	j = 0;
+	while (j < width)
 	{
-		cfg->map[i] = malloc(cfg->map_width + 1);
-		if (!cfg->map[i])
-		{
-			while (i-- > 0)
-				free(cfg->map[i]);
-			free(cfg->map);
-			cfg->map = NULL;
-			return (-1);
-		}
-		j = 0;
-		while (j < cfg->map_width)
-		{
-			cfg->map[i][j] = ' ';
-			j++;
-		}
-		cfg->map[i][cfg->map_width] = '\0';
-		i++;
+		row[j] = ' ';
+		j++;
 	}
-	cfg->map[cfg->map_height] = NULL;
-	return (0);
+	row[width] = '\0';
+	return (row);
 }
 
-int	fill_map(char **map_lines, t_congif *cfg)
+static void	free_map_partial(char **map, int rows)
 {
-	int	i;
-	int	j;
-
-	if (!cfg || !cfg->map || !map_lines)
-		return (-1);
-	i = 0;
-	while (i < cfg->map_height && map_lines[i])
-	{
-		j = 0;
-		while (map_lines[i][j] && j < cfg->map_width)
-		{
-			cfg->map[i][j] = map_lines[i][j];
-			j++;
-		}
-		i++;
-	}
-	cfg->map[i] = NULL;
-	return (0);
+	while (rows-- > 0)
+		free(map[rows]);
+	free(map);
 }
 
 int	count_map_size(char **lines, t_congif *cfg)
