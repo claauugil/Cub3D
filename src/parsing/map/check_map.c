@@ -6,34 +6,46 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:47:09 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/20 10:44:47 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/20 14:31:45 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int is_surrounded(char **map, int i, int j)
+static int is_player(char player)
 {
-	if (i == 0 || j == 0 || !map[i + 1] || !map[i -1])
-		return (0);
-	if (j >= (int)ft_strlen(map[i -1]) || j >= (int)ft_strlen(map[i +1]))
-		return (0);
+	if (player == 'N' || player == 'S' || player == 'W' || player == 'E')
+		return (1);
+	return (0);
 }
-int	check_map(char **map)
+
+static int is_surrounded(char **map, int i, int j)
+{
+    if (!check_up(map, i, j))
+        return (0);
+    if (!check_down(map, i, j))
+        return (0);
+    if (!check_left(map, i, j))
+        return (0);
+    if (!check_right(map, i, j))
+        return (0);
+    return (1);
+}
+int	check_map(t_congif *cfg)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (map[i])
+	while (cfg->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (cfg->map[i][j])
 		{
-			if (map[i][j] == '0' || is_player(map[i][j]))
+			if (cfg->map[i][j] == '0' || is_player(cfg->map[i][j]))
 			{
-				if (!is_surrounded(map, i, j))
-					return (print_err("map not closed"), 0);
+				if (!is_surrounded(cfg->map, i, j))
+					return (ft_print_error("map not closed"));
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/20 10:41:21 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/20 14:28:40 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	validate_single_player(char **lines)
 		}
 		i++;
 	}
-	if (player != 1)
-		return (-1);
-	printf("only 1 player detected!\n");
+	if (player < 1)
+		return (ft_print_error("Error: no player found"));
+	else if (player > 1)
+		return (ft_print_error("Error: more than one player found"));
 	return (0);
 }
 

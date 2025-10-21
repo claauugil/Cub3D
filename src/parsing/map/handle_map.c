@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 19:31:18 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/20 10:44:08 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/20 14:26:21 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int handle_map(char **lines, t_congif *cfg, int map_start)
     if (validate_map_chars(lines + map_start) == -1)
 		return (ft_print_error("Error: invalid chars"));
     if (validate_single_player(lines + map_start) == -1)
-		return (ft_print_error("More than a single player detected"));
+		return (-1);
 	if (count_map_size(lines + map_start, cfg) == -1)
 		return (-1);
 	if (allocate_map(cfg) == -1)
@@ -44,7 +44,7 @@ static void print_arr(t_congif *cfg)
 		while (cfg->map[i][j])
 		{
 			if (cfg->map[i][j] == ' ')
-				printf("e");
+				printf(".");
 			else
 				printf("%c", cfg->map[i][j]);
 			j++;
