@@ -6,13 +6,13 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 15:37:03 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 17:50:50 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int is_map_line(char *line)
+static int	is_map_line(char *line)
 {
 	int	j;
 
@@ -22,28 +22,28 @@ static int is_map_line(char *line)
 	return (line[j] == '1' || line[j] == '0');
 }
 
-static int is_texture_line(char *line)
+static int	is_texture_line(char *line)
 {
-    while (*line == ' ')
-        line++;
-    if (!ft_strncmp(line, "NO", 2) && line[2] == ' ')
-        return (1);
-    if (!ft_strncmp(line, "SO", 2) && line[2] == ' ')
-        return (1);
-    if (!ft_strncmp(line, "WE", 2) && line[2] == ' ')
-        return (1);
-    if (!ft_strncmp(line, "EA", 2) && line[2] == ' ')
-        return (1);
-    return (0);
+	while (*line == ' ')
+		line++;
+	if (!ft_strncmp(line, "NO", 2) && line[2] == ' ')
+		return (1);
+	if (!ft_strncmp(line, "SO", 2) && line[2] == ' ')
+		return (1);
+	if (!ft_strncmp(line, "WE", 2) && line[2] == ' ')
+		return (1);
+	if (!ft_strncmp(line, "EA", 2) && line[2] == ' ')
+		return (1);
+	return (0);
 }
 
-static int is_color_line(char *line)
+static int	is_color_line(char *line)
 {
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if ((*line == 'F' || *line == 'C')
 		&& (line[1] == ' ' || line[1] == '\t'))
-		return(1);
+		return (1);
 	return (0);
 }
 
@@ -60,7 +60,7 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 		if (is_map_line(lines[i]))
 		{
 			*map_start = i;
-			break;
+			break ;
 		}
 		else if (check_headers(lines[i], cfg, &headers) == -1)
 			return (-1);
@@ -73,7 +73,7 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 	return (0);
 }
 
-int check_headers(char *line, t_congif *cfg, int *headers)
+int	check_headers(char *line, t_congif *cfg, int *headers)
 {
 	if (is_texture_line(line))
 	{
@@ -88,7 +88,6 @@ int check_headers(char *line, t_congif *cfg, int *headers)
 		(*headers)++;
 	}
 	else
-		return(ft_print_error("Error: Invalid Identifier"));
+		return (ft_print_error("Error: Invalid Identifier"));
 	return (0);
 }
-
