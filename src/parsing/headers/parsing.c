@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 12:08:01 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:36:47 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	parse_cub(char *map, t_congif *cfg)
 	rm_empty_lines(lines);
 	if (handle_headers(lines, cfg, &map_start) == -1) // parse headers textures/colors
 	{
-		free(lines);
+		free_split(lines);
 		return (-1);	
 	}
 	if (handle_map(lines, cfg, map_start) == -1)
 	{
-		free (lines);
+		free_split(lines);
 		return (-1);	
 	}
 	free_split(lines);

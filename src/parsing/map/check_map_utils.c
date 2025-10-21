@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 13:57:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 12:09:39 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/20 14:15:35 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int check_up(char **map, int i, int j)
 	while (x >= 0 && j < (int)ft_strlen(map[x]))
 	{
 		if (map[x][j] == ' ')
-		{
-			printf("Error\nempty space inside of the map\n");
-			return (0);	
-		}
+			return (0);
 		if (map[x][j] == '1')
 			return (1);
 		x--;
@@ -38,10 +35,7 @@ int check_down(char **map, int i, int j)
 	while (map[x] && j < (int)ft_strlen(map[x]))
 	{
 		if (map[x][j] == ' ')
-		{
-			printf("Error\nempty space inside of the map\n");
-			return (0);	
-		}
+			return (0);
 		if (map[x][j] == '1')
 			return (1);
 		x++;
@@ -56,10 +50,7 @@ int check_left(char **map, int i, int j)
 	while (y >= 0)
 	{
 		if (map[i][y] == ' ')
-		{
-			printf("Error\nempty space inside of the map\n");
-			return (0);	
-		}
+			return (0);
 		if (map[i][y] == '1')
 			return (1);
 		y--;
@@ -74,10 +65,7 @@ int check_right(char **map, int i, int j)
 	while (y < (int)ft_strlen(map[i]))
 	{
 		if (map[i][y] == ' ')
-		{
-			printf("Error\nempty space inside of the map\n");
-			return (0);	
-		}
+			return (0);
 		if (map[i][y] == '1')
 			return (1);
 		y++;

@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:47:09 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 12:05:52 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:49:11 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_map(t_congif *cfg)
 			if (cfg->map[i][j] == '0' || is_player(cfg->map[i][j]))
 			{
 				if (!is_surrounded(cfg->map, i, j))
-					return (-1);
+					return (ft_print_error("Error\nMap not closed or with invalid spaces"));
 			}
 			j++;
 		}

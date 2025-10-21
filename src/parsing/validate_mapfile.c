@@ -6,13 +6,11 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:17:54 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 11:31:19 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:55:38 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// revisa que termine en .cub
 
 int	validate_file(char *filename)
 {
@@ -33,7 +31,10 @@ int check_open(char *path)
 
     fd = open(path, O_RDONLY);
     if (fd < 0)
+    {
+        printf("Error: couldn't open file\n");
         return (-1);
+    }
     close(fd);
     return (0);  
 }
