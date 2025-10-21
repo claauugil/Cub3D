@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 11:52:53 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 15:37:03 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int is_map_line(char *line)
 		j++;
 	return (line[j] == '1' || line[j] == '0');
 }
+
 static int is_texture_line(char *line)
 {
     while (*line == ' ')
@@ -66,7 +67,7 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 		i++;
 	}
 	if (headers != 6)
-		return (ft_print_error("Error\nTextures missing"));
+		return (ft_print_error("Error\nHeaders missing"));
 	if (*map_start == -1)
 		return (ft_print_error("Error\nNo map found"));
 	return (0);

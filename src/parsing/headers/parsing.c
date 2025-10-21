@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 12:36:47 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 15:42:13 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	parse_cub(char *map, t_congif *cfg)
 	char	**lines;
 	int		map_start;
 		
-	if (!(lines = read_all_lines(map))) // read lines gnl
+	if (!(lines = read_all_lines(map)))
 		return (free_and_error(NULL, "Error\nincorrect map\n"));
 	rm_empty_lines(lines);
-	if (handle_headers(lines, cfg, &map_start) == -1) // parse headers textures/colors
+	if (handle_headers(lines, cfg, &map_start) == -1)
 	{
 		free_split(lines);
 		return (-1);	
@@ -59,8 +59,8 @@ static void rm_empty_lines(char **lines)
 	j = 0;
 	while (lines[i])
 	{
-		if (!is_line_empty(lines[i])) // line is not empty
-			lines[j++] = lines[i]; // copy line
+		if (!is_line_empty(lines[i]))
+			lines[j++] = lines[i];
 		else
 			free(lines[i]);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 19:31:18 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/21 12:01:28 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 16:02:10 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int handle_map(char **lines, t_congif *cfg, int map_start)
 		return (-1);
 	if (check_map(cfg) == -1)
 		return (-1);
-	//normalize_map(cfg);
     return (0);
 }

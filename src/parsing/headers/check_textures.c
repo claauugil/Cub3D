@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/21 11:44:40 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:24:39 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ int check_texture(char *line, t_congif *cfg)
 		return(free_split(split), -1);
     if (validate_file(split[1]) == -1)
     {
-        free_split(split);
-        return (-1);
+        return(free_and_error(split, "Error\nInvalid file extension"));
     }
 	fd = open(split[1], O_RDONLY);
 	if (fd < 0)
