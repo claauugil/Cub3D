@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/20 14:28:40 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 11:12:28 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	validate_map_chars(char **map_lines)
 		}
 		i++;
 	}
-	printf("Valid map chars!\n");
 	return (0);
 }
 
