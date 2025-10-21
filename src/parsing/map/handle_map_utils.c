@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 11:12:28 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/21 18:31:08 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	validate_single_player(char **lines)
 {
-	int i;
-	int j;
-	int player;
+	int	i;
+	int	j;
+	int	player;
 
 	i = 0;
 	player = 0;
-	while(lines[i])
+	while (lines[i])
 	{
 		j = 0;
 		while (lines[i][j])
@@ -50,7 +50,7 @@ int	validate_map_chars(char **map_lines)
 		j = 0;
 		while (map_lines[i][j])
 		{
-			if (map_lines[i][j] != '0' && map_lines[i][j] != '1'&&
+			if (map_lines[i][j] != '0' && map_lines[i][j] != '1' &&
 				map_lines[i][j] != 'N' && map_lines[i][j] != 'S' &&
 				map_lines[i][j] != 'W' && map_lines[i][j] != 'E' &&
 				map_lines[i][j] != ' ' && map_lines[i][j] != '\t')
@@ -101,7 +101,7 @@ int	fill_map(char **map_lines, t_congif *cfg)
 {
 	int	i;
 	int	j;
-	
+
 	if (!cfg || !cfg->map || !map_lines)
 		return (-1);
 	i = 0;
@@ -121,15 +121,15 @@ int	fill_map(char **map_lines, t_congif *cfg)
 
 int	count_map_size(char **lines, t_congif *cfg)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	if (!lines || !cfg)
 		return (-1);
 	i = 0;
 	cfg->map_width = 0;
 	cfg->map_height = 0;
-	while(lines[i])
+	while (lines[i])
 	{
 		len = 0;
 		while (lines[i][len])
