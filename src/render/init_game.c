@@ -9,6 +9,7 @@
 <<<<<<< HEAD:src/render/init_game.c
 <<<<<<< HEAD:src/render/init_game.c
 <<<<<<< HEAD:src/render/init_game.c
+<<<<<<< HEAD:src/render/init_game.c
 /*   Updated: 2025/10/22 12:50:22 by claudia          ###   ########.fr       */
 =======
 /*   Updated: 2025/10/16 12:36:57 by gmaccha-         ###   ########.fr       */
@@ -19,6 +20,9 @@
 =======
 /*   Updated: 2025/10/19 00:28:05 by gmaccha-         ###   ########.fr       */
 >>>>>>> 89c2067 (update movement, hooks, minimap):src/init_game.c
+=======
+/*   Updated: 2025/10/22 10:01:04 by claudia          ###   ########.fr       */
+>>>>>>> 43d9859 (clean):src/init_game.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +59,7 @@ void set_player_direction(t_game *game, char dir)
         game->plane_y = -0.66;
     }
 }
-// Cargar las texturas desde archivos XPM
-// -------------------------------------
+
 void load_textures(t_game *game)
 {
     t_config *cfg = game->cfg;
@@ -83,6 +86,7 @@ void load_textures(t_game *game)
     }
 }
 
+<<<<<<< HEAD:src/render/init_game.c
 
 
 void load_textures(t_game *game)
@@ -111,6 +115,8 @@ void load_textures(t_game *game)
     }
 }
 
+=======
+>>>>>>> 43d9859 (clean):src/init_game.c
 int init_game(t_game *game, t_config *cfg)
 {
 	game->cfg = cfg;
@@ -127,6 +133,7 @@ int init_game(t_game *game, t_config *cfg)
 	game->pos_y = cfg->player_y;
 	set_player_direction(game, cfg->player_dir);
 <<<<<<< HEAD:src/render/init_game.c
+<<<<<<< HEAD:src/render/init_game.c
     mlx_hook(game->win, KeyPress, KeyPressMask, handle_key_press, game);
     mlx_hook(game->win, 17, 0, close_window, game);
     load_textures(game);
@@ -141,5 +148,10 @@ int init_game(t_game *game, t_config *cfg)
    // game->move_speed = 0.05;
     //game->rot_speed = 0.03;
 >>>>>>> 9844dba (update render_frame):src/init_game.c
+=======
+    mlx_hook(game->win, KeyPress, KeyPressMask, handle_key_press, game);
+    mlx_hook(game->win, 17, 0, close_window, game);
+    load_textures(game);
+>>>>>>> 43d9859 (clean):src/init_game.c
 	return (0);
 }

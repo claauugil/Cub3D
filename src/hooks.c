@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:48:13 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/19 00:00:52 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/22 09:58:48 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ int close_window(t_game *game)
    if (!game) exit(0);
     if (game->img.img)
         mlx_destroy_image(game->mlx, game->img.img);
-    // liberar texturas si las creaste con mlx_new_image (y destruirlas)
     if (game->win)
         mlx_destroy_window(game->mlx, game->win);
-    free_cfg(game->cfg); // si tu free_cfg libera todo correctamente
+    free_cfg(game->cfg);
     exit(0);
     return (0);
 }
@@ -30,10 +29,8 @@ int handle_key_press(int keycode, t_game *game)
 {
     if (!game || !game->cfg || !game->cfg->map)
     return (0);
-    
     if (keycode == XK_Escape)
         close_window(game);
-
     if (keycode == XK_w)
         move_forward(game);
     else if (keycode == XK_s)
@@ -47,7 +44,7 @@ int handle_key_press(int keycode, t_game *game)
     else if (keycode == XK_Right)
         rotate_right(game);
     else if (keycode == XK_space)
-        toggle_door(game);   // 👈 abrir/cerrar puerta
-    render_frame(game); // vuelve a dibujar el frame con la nueva posición
+        toggle_door(game);
+    render_frame(game);
     return (0);
 }
