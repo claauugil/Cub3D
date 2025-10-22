@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 17:50:50 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 10:41:16 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	is_color_line(char *line)
 	return (0);
 }
 
-int	handle_headers(char **lines, t_congif *cfg, int *map_start)
+int	handle_headers(char **lines, t_config *cfg, int *map_start)
 {
 	int	i;
 	int	headers;
@@ -73,7 +73,7 @@ int	handle_headers(char **lines, t_congif *cfg, int *map_start)
 	return (0);
 }
 
-int	check_headers(char *line, t_congif *cfg, int *headers)
+int	check_headers(char *line, t_config *cfg, int *headers)
 {
 	if (is_texture_line(line))
 	{

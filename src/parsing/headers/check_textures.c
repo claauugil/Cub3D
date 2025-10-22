@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/21 17:47:30 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 10:38:56 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	assign_texture(char **target, char *path)
 	return (0);
 }
 
-static int	save_textures(t_congif *cfg, char *coord, char *path)
+static int	save_textures(t_config *cfg, char *coord, char *path)
 {
 	if (ft_strncmp(coord, "NO", 3) == 0)
 		return (assign_texture(&cfg->tex_no, path));
@@ -36,7 +36,7 @@ static int	save_textures(t_congif *cfg, char *coord, char *path)
 		return (-1);
 }
 
-int	check_texture(char *line, t_congif *cfg)
+int	check_texture(char *line, t_config *cfg)
 {
 	char	**split;
 	int		fd;

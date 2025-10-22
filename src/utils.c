@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 09:59:05 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 17:04:47 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 10:35:39 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_split(char **array)
 	free(array);
 }
 
-void	free_cfg(t_congif *cfg)
+void free_cfg(t_config *cfg)
 {
 	int	i;
 

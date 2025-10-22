@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 19:31:18 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/21 18:56:50 by claudia          ###   ########.fr       */
+/*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
+/*   Updated: 2025/10/22 10:44:11 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	handle_map(char **lines, t_congif *cfg, int map_start)
+int	handle_map(char **lines, t_config *cfg, int map_start)
 {
 	if (validate_map_chars(lines + map_start) == -1)
 		return (ft_print_error("Error\ninvalid chars found in map"));

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 18:11:58 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 18:23:31 by claudia          ###   ########.fr       */
+/*   Created: 2025/09/30 15:03:00 by claudia           #+#    #+#             */
+/*   Updated: 2025/10/22 11:24:32 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	rm_empty_lines(char **lines);
 
-int	parse_cub(char *map, t_congif *cfg)
+int	parse_cub(char *map, t_config *cfg)
 {
 	char	**lines;
 	int		map_start;
