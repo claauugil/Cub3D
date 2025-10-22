@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 13:32:21 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 13:41:10 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,4 @@ static int validate_single_player(char **lines)
 	if (player != 1)
 		return (-1);
 	return (0);
-}
+}*/

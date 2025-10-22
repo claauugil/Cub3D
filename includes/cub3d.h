@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 13:36:59 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 13:42:13 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,14 @@ int		handle_errors(char **store, char *buffer, ssize_t bytes_read);
 int	count_map_size(char **lines, t_config *cfg);
 int	validate_single_player(char **lines);
 int	validate_map_chars(char **map_lines);
-int	fill_map(char **map_lines, t_config *cfg);
+int	fill_map(char **map_lines, t_config *cfg);*/
 int	check_map(t_config *cfg);
 int check_up(char **map, int i, int j);
 int check_down(char **map, int i, int j);
 int check_left(char **map, int i, int j);
 int check_right(char **map, int i, int j);
-int	init_game(t_game *game, t_config *cfg);*/
 
+int	init_game(t_game *game, t_config *cfg);
 void render_frame(t_game *game);
 void draw_background(t_img *img, int ceiling, int floor);
 void put_pixel(t_img *img, int x, int y, int color);

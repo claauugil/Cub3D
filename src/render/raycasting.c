@@ -6,26 +6,14 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:48:44 by gmaccha-          #+#    #+#             */
-<<<<<<< HEAD:src/render/raycasting.c
-<<<<<<< HEAD:src/render/raycasting.c
-/*   Updated: 2025/10/22 12:45:11 by claudia          ###   ########.fr       */
-=======
-/*   Updated: 2025/10/16 12:39:15 by gmaccha-         ###   ########.fr       */
->>>>>>> 9844dba (update render_frame):src/raycasting.c
-=======
-/*   Updated: 2025/10/19 01:33:32 by gmaccha-         ###   ########.fr       */
->>>>>>> 13a1263 (update minimap):src/raycasting.c
+/*   Updated: 2025/10/22 13:42:46 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-<<<<<<< HEAD:src/render/raycasting.c
-double cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y, int *side_hit)
-=======
 // Calcula la distancia a la pared con el algoritmo DDA
 t_ray cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
->>>>>>> 13a1263 (update minimap):src/raycasting.c
 {
     int map_x = (int)game->pos_x;
     int map_y = (int)game->pos_y;

@@ -6,23 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:20:29 by gmaccha-          #+#    #+#             */
-<<<<<<< HEAD:src/render/render.c
-<<<<<<< HEAD:src/render/render.c
-<<<<<<< HEAD:src/render/render.c
-<<<<<<< HEAD:src/render/render.c
-/*   Updated: 2025/10/22 12:44:47 by claudia          ###   ########.fr       */
-=======
-/*   Updated: 2025/10/15 20:11:27 by gmaccha-         ###   ########.fr       */
->>>>>>> 9844dba (update render_frame):src/render.c
-=======
-/*   Updated: 2025/10/18 16:00:21 by gmaccha-         ###   ########.fr       */
->>>>>>> 5bb93e5 (update key_press, minimap):src/render.c
-=======
-/*   Updated: 2025/10/19 00:23:09 by gmaccha-         ###   ########.fr       */
->>>>>>> 89c2067 (update movement, hooks, minimap):src/render.c
-=======
-/*   Updated: 2025/10/19 01:35:45 by gmaccha-         ###   ########.fr       */
->>>>>>> 13a1263 (update minimap):src/render.c
+/*   Updated: 2025/10/22 13:42:55 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,24 +99,7 @@ void render_frame(t_game *game)
             put_pixel(&game->img, x, y, color);
         }
     }
-<<<<<<< HEAD:src/render/render.c
-<<<<<<< HEAD:src/render/render.c
-    mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
-<<<<<<< HEAD:src/render/render.c
-}
-=======
-    draw_minimap(game);
-}
->>>>>>> 5bb93e5 (update key_press, minimap):src/render.c
-=======
-    draw_minimap(game);
-    mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
-    
-}
->>>>>>> 89c2067 (update movement, hooks, minimap):src/render.c
-=======
 
     draw_minimap(game);
     mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 }
->>>>>>> 13a1263 (update minimap):src/render.c
