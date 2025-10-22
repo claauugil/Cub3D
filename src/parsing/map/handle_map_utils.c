@@ -6,13 +6,13 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 11:44:14 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 16:17:57 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	validate_single_player(char **lines)
+int	validate_single_player(char **lines, t_config *cfg)
 {
 	int	i;
 	int	j;
@@ -27,7 +27,12 @@ int	validate_single_player(char **lines)
 		{
 			if (lines[i][j] == 'N' || lines[i][j] == 'S'
 			|| lines[i][j] == 'W' || lines[i][j] == 'E')
-				player++;
+			{
+				cfg->player_y = i;
+				cfg->player_x = j;
+				cfg->player_dir = lines[i][j];
+				player++;	
+			}
 			j++;
 		}
 		i++;
