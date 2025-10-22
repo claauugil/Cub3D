@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 18:59:31 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 11:44:14 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,32 +62,64 @@ int	validate_map_chars(char **map_lines)
 	return (0);
 }
 
-static char	*allocate_row(int width)
+int	allocate_map(t_config *cfg)
 {
-	int		j;
-	char	*row;
+	int	i;
+	int	j;
 
-	row = malloc(width + 1);
-	if (!row)
-		return (NULL);
-	j = 0;
-	while (j < width)
+	if (!cfg || cfg->map_height <= 0 || cfg->map_width <= 0)
+		return (-1);
+	cfg->map = malloc(sizeof(char *) * (cfg->map_height + 1));
+	if (!cfg->map)
+		return (-1);
+	i = 0;
+	while (i < cfg->map_height)
 	{
-		row[j] = ' ';
-		j++;
+		cfg->map[i] = malloc(cfg->map_width + 1);
+		if (!cfg->map[i])
+		{
+			while (i-- > 0)
+				free(cfg->map[i]);
+			free(cfg->map);
+			cfg->map = NULL;
+			return (-1);
+		}
+		j = 0;
+		while (j < cfg->map_width)
+		{
+			cfg->map[i][j] = ' ';
+			j++;
+		}
+		cfg->map[i][cfg->map_width] = '\0';
+		i++;
 	}
-	row[width] = '\0';
-	return (row);
+	cfg->map[cfg->map_height] = NULL;
+	return (0);
 }
 
-static void	free_map_partial(char **map, int rows)
+int	fill_map(char **map_lines, t_config *cfg)
 {
-	while (rows-- > 0)
-		free(map[rows]);
-	free(map);
+	int	i;
+	int	j;
+
+	if (!cfg || !cfg->map || !map_lines)
+		return (-1);
+	i = 0;
+	while (i < cfg->map_height && map_lines[i])
+	{
+		j = 0;
+		while (map_lines[i][j] && j < cfg->map_width)
+		{
+			cfg->map[i][j] = map_lines[i][j];
+			j++;
+		}
+		i++;
+	}
+	cfg->map[i] = NULL;
+	return (0);
 }
 
-int	count_map_size(char **lines, t_congif *cfg)
+int	count_map_size(char **lines, t_config *cfg)
 {
 	int	i;
 	int	len;

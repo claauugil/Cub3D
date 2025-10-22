@@ -10,6 +10,13 @@ SRCS= src/main.c \
 	  src/parsing/map/check_map.c \
 	  src/parsing/map/check_map_utils.c \
 	  src/parsing/map/map_utils2.c \
+	  src/render/door.c\
+	  src/render/hooks.c\
+	  src/render/minimap.c\
+	  src/render/movements.c\
+	  src/render/raycasting.c\
+	  src/render/render.c\
+	  src/render/init_game.c \
 	  gnl/get_next_line.c \
 
 NAME = cub3d

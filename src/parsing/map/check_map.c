@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:47:09 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/21 18:26:40 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 10:59:26 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	is_surrounded(char **map, int i, int j)
 	return (1);
 }
 
-int	check_map(t_congif *cfg)
+int	check_map(t_config *cfg)
 {
 	int	i;
 	int	j;

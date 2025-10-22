@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+=======
+/* XPM */
+>>>>>>> 89c2067 (update movement, hooks, minimap)
+static char *door_xpm[] = {
+"1 1 1 1",
+". c #8B4513",
+"."
+};
