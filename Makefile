@@ -6,6 +6,10 @@ SRCS= src/main.c \
 	  src/parsing/headers/check_textures.c \
 	  src/parsing/headers/parse_header_utils.c \
 	  src/parsing/map/handle_map.c \
+	  src/parsing/map/handle_map_utils.c \
+	  src/parsing/map/check_map.c \
+	  src/parsing/map/check_map_utils.c \
+	  src/parsing/map/map_utils2.c \
 	  gnl/get_next_line.c \
 
 NAME = cub3d
