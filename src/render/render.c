@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:20:29 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/22 13:42:55 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 19:31:45 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void render_frame(t_game *game)
             put_pixel(&game->img, x, y, color);
         }
     }
-
     draw_minimap(game);
     mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 }
