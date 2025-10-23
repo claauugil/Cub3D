@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/22 19:18:26 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/23 19:57:48 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ int init_game(t_game *game, t_config *cfg)
 	game->pos_y = cfg->player_y;
 	set_player_direction(game, cfg->player_dir);
     mlx_hook(game->win, KeyPress, KeyPressMask, handle_key_press, game);
+    mlx_hook(game->win, KeyRelease, KeyReleaseMask, handle_key_release, game);
     mlx_hook(game->win, 17, 0, close_window, game);
+    mlx_loop_hook(game->mlx, ft_update, game);
     load_textures(game);
 	return (0);
 }
