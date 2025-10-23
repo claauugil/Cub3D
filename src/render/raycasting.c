@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:48:44 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/23 18:16:54 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/23 18:30:37 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@
     ray.is_door = is_door;
     return ray;
 }*/
-
 
 t_ray cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
 {

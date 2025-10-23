@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 16:29:37 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/23 19:58:01 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ typedef struct s_tex
 	int     endian;
 }   t_tex;
 
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	left;
+	int	right;
+}	t_keys;
+
 typedef struct s_game
 {
 	void    *mlx;
@@ -90,6 +100,7 @@ typedef struct s_game
 	double  plane_x;
 	double  plane_y;
 	t_tex   tex[5];
+	t_keys	keys;
 } t_game;
 
 typedef struct s_ray
@@ -131,7 +142,6 @@ int check_up(char **map, int i, int j);
 int check_down(char **map, int i, int j);
 int check_left(char **map, int i, int j);
 int check_right(char **map, int i, int j);
-
 int	init_game(t_game *game, t_config *cfg);
 void render_frame(t_game *game);
 void draw_background(t_img *img, int ceiling, int floor);
@@ -145,6 +155,8 @@ void strafe_right(t_game *game);
 void rotate_left(t_game *game);
 void rotate_right(t_game *game);
 int handle_key_press(int keycode, t_game *game);
+int	handle_key_release(int keycode, t_game * game);
+int ft_update(t_game *game);
 int close_window(t_game *game);
 void draw_minimap(t_game *game);
 void toggle_door(t_game *game);
