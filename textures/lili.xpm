@@ -1,0 +1,6 @@
+/* XPM */
+static char * path_west_xpm[] = {
+"1 1 1 1",
+". c #c79fe2",
+"."
+};
