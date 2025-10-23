@@ -6,21 +6,34 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 13:41:10 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/22 16:16:57 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//static int validate_map_chars(char **map_lines);
-//static int validate_single_player(char **lines);
+int	handle_map(char **lines, t_config *cfg, int map_start)
+{
+	if (validate_map_chars(lines + map_start) == -1)
+		return (ft_print_error("Error\ninvalid chars found in map"));
+	if (validate_single_player(lines + map_start, cfg) == -1)
+		return (-1);
+	if (count_map_size(lines + map_start, cfg) == -1)
+		return (-1);
+	if (allocate_map(cfg) == -1)
+		return (-1);
+	if (fill_map(lines + map_start, cfg) == -1)
+		return (-1);
+	if (check_map(cfg) == -1)
+		return (-1);
+	return (0);
+}
 
-int handle_map(char **lines, t_config *cfg, int map_start)
+/*int handle_map(char **lines, t_config *cfg, int map_start)
 {
     int height = 0;
     int width = 0;
 
-    // Contar filas del mapa y ancho máximo
     while (lines[map_start + height])
     {
         int len = ft_strlen(lines[map_start + height]);
@@ -28,11 +41,8 @@ int handle_map(char **lines, t_config *cfg, int map_start)
             width = len;
         height++;
     }
-
     cfg->map_height = height;
     cfg->map_width = width;
-
-    // Reservar memoria para el mapa
     cfg->map = malloc(sizeof(char*) * (height + 1));
     if (!cfg->map)
         return (ft_print_error("Memory allocation failed"));
@@ -44,14 +54,11 @@ int handle_map(char **lines, t_config *cfg, int map_start)
         if (!cfg->map[i])
             return (ft_print_error("Memory allocation failed"));
         ft_memcpy(cfg->map[i], lines[map_start + i], len);
-        // rellenar con espacios
         for (int j = len; j < width; j++)
             cfg->map[i][j] = ' ';
         cfg->map[i][width] = '\0';
     }
     cfg->map[height] = NULL;
-
-    // Validar caracteres y detectar jugador
     int player_found = 0;
     for (int y = 0; y < height; y++)
     {
@@ -71,7 +78,6 @@ int handle_map(char **lines, t_config *cfg, int map_start)
             }
             else if (c == '0' || c == '1' || c == 'D')
             {
-                // Son válidos: suelo, muro o puerta
                 continue;
             }
             else
@@ -87,7 +93,6 @@ int handle_map(char **lines, t_config *cfg, int map_start)
     return (0);
 }
 
-/*
 static int validate_single_player(char **lines)
 {
 	int i;

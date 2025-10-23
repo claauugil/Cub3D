@@ -33,34 +33,28 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 INCLUDES = -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) 
 
-HEADER = "\
-\n\
-$(PINK)▞▀▖▌ ▌▛▀▖ ▞▀▖▛▀▖\n\
-▌  ▌ ▌▙▄▘  ▄▘▌ ▌\n\
-▌ ▖▌ ▌▌ ▌ ▖ ▌▌ ▌\n\
-▝▀ ▝▀ ▀▀  ▝▀ ▀▀$(RESET)\n\
-\n"
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	cd $(MLX_DIR) && $(MAKE) 
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
-	printf $(HEADER)
+	@cd $(MLX_DIR) && $(MAKE) >/dev/null 2>&1
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME) 
+	@printf "\n$(PINK)▞▀▖▌ ▌▛▀▖ ▞▀▖▛▀▖\n▌  ▌ ▌▙▄▘  ▄▘▌ ▌\n▌ ▖▌ ▌▌ ▌ ▖ ▌▌ ▌\n▝▀ ▝▀ ▀▀  ▝▀ ▀▀$(RESET)\n\n"
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) 
+	@$(MAKE) -C $(LIBFT_DIR) >/dev/null 2>&1
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	cd $(MLX_DIR) && $(MAKE) clean
-	$(MAKE) -C $(LIBFT_DIR) clean
-	rm -f $(OBJS)
+	@cd $(MLX_DIR) && $(MAKE) clean >/dev/null 2>&1
+	@$(MAKE) -C $(LIBFT_DIR) clean >/dev/null 2>&1
+	@rm -f $(OBJS)
+	@printf "Cleaned ✅\n"
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean >/dev/null 2>&1
+	@rm -f $(NAME)
+	@printf "Fully cleaned ✅\n"
 
 re: fclean all
