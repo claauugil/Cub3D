@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/23 19:58:01 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/24 02:22:54 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #define WIN_W 640
 #define WIN_H 480
 
-#define MOVE_SPEED 0.08
+#define MOVE_SPEED 0.03
 #define ROT_SPEED 0.03
 
 #define TILE_SIZE 8
@@ -110,6 +110,35 @@ typedef struct s_ray
     int is_door;
 } t_ray;
 
+typedef struct s_dda
+{
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	delta_x;
+	double	delta_y;
+	double	side_x;
+	double	side_y;
+}	t_dda;
+
+typedef struct s_line
+{
+	int	end_x;
+	int	end_y;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+}	t_line;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 int		validate_map(char *map);
 int		validate_file(char *filename);
 int		check_open(char *path);
@@ -160,5 +189,21 @@ int ft_update(t_game *game);
 int close_window(t_game *game);
 void draw_minimap(t_game *game);
 void toggle_door(t_game *game);
+
+//raycasting_utils
+int		check_hit(t_game *game, t_dda *dda, int *is_door,
+			int *hit);
+void	step_ray(t_dda *dda, int *side);
+void	init_steps(t_game *game, double ray_dir_x, double ray_dir_y,
+			t_dda *dda);
+void	init_deltas(double ray_dir_x, double ray_dir_y,
+			double *delta_x, double *delta_y);
+//minimap
+void	draw_minimap(t_game *game);
+void	draw_minimap_circle(t_game *game, int cx, int cy);
+void	draw_minimap_player(t_game *game, int cx, int cy);
+void	draw_minimap_dir(t_game *game, int cx, int cy);
+void	mini_put_pixel(t_img *img, int x, int y, int color);
+int		get_cell_color(t_game *game, int map_x, int map_y);
 
 #endif

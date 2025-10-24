@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:48:44 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/23 18:30:37 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/24 01:54:36 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,209 +14,149 @@
 
 /*t_ray cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
 {
-    int map_x = (int)game->pos_x;
-    int map_y = (int)game->pos_y;
+	int map_x = (int)game->pos_x;
+	int map_y = (int)game->pos_y;
 
-    double delta_dist_x;
-    double delta_dist_y;
+	double delta_dist_x;
+	double delta_dist_y;
 
-    if (ray_dir_x == 0)
-        delta_dist_x = 1e30;
-    else
-        delta_dist_x = fabs(1 / ray_dir_x);
+	if (ray_dir_x == 0)
+		delta_dist_x = 1e30;
+	else
+		delta_dist_x = fabs(1 / ray_dir_x);
 
-    if (ray_dir_y == 0)
-        delta_dist_y = 1e30;
-    else
-        delta_dist_y = fabs(1 / ray_dir_y);
+	if (ray_dir_y == 0)
+		delta_dist_y = 1e30;
+	else
+		delta_dist_y = fabs(1 / ray_dir_y);
 
-    double side_dist_x;
-    double side_dist_y;
-    int step_x;
-    int step_y;
-    int hit = 0;
-    int side_local = 0;
-    int is_door = 0;
+	double side_dist_x;
+	double side_dist_y;
+	int step_x;
+	int step_y;
+	int hit = 0;
+	int side_local = 0;
+	int is_door = 0;
 
-    if (ray_dir_x < 0)
-    {
-        step_x = -1;
-        side_dist_x = (game->pos_x - map_x) * delta_dist_x;
-    }
-    else
-    {
-        step_x = 1;
-        side_dist_x = (map_x + 1.0 - game->pos_x) * delta_dist_x;
-    }
+	if (ray_dir_x < 0)
+	{
+		step_x = -1;
+		side_dist_x = (game->pos_x - map_x) * delta_dist_x;
+	}
+	else
+	{
+		step_x = 1;
+		side_dist_x = (map_x + 1.0 - game->pos_x) * delta_dist_x;
+	}
 
-    if (ray_dir_y < 0)
-    {
-        step_y = -1;
-        side_dist_y = (game->pos_y - map_y) * delta_dist_y;
-    }
-    else
-    {
-        step_y = 1;
-        side_dist_y = (map_y + 1.0 - game->pos_y) * delta_dist_y;
-    }
+	if (ray_dir_y < 0)
+	{
+		step_y = -1;
+		side_dist_y = (game->pos_y - map_y) * delta_dist_y;
+	}
+	else
+	{
+		step_y = 1;
+		side_dist_y = (map_y + 1.0 - game->pos_y) * delta_dist_y;
+	}
 
-    int map_height = 0;
-    while (game->cfg->map[map_height])
-        map_height++;
-    int map_width = ft_strlen(game->cfg->map[0]);
+	int map_height = 0;
+	while (game->cfg->map[map_height])
+		map_height++;
+	int map_width = ft_strlen(game->cfg->map[0]);
 
-    while (!hit)
-    {
-        if (side_dist_x < side_dist_y)
-        {
-            side_dist_x += delta_dist_x;
-            map_x += step_x;
-            side_local = 0;
-        }
-        else
-        {
-            side_dist_y += delta_dist_y;
-            map_y += step_y;
-            side_local = 1;
-        }
+	while (!hit)
+	{
+		if (side_dist_x < side_dist_y)
+		{
+			side_dist_x += delta_dist_x;
+			map_x += step_x;
+			side_local = 0;
+		}
+		else
+		{
+			side_dist_y += delta_dist_y;
+			map_y += step_y;
+			side_local = 1;
+		}
 
-        if (map_y < 0 || map_y >= map_height || map_x < 0 || map_x >= map_width)
-        {
-            hit = 1;
-            break;
-        }
+		if (map_y < 0 || map_y >= map_height || map_x < 0 || map_x >= map_width)
+		{
+			hit = 1;
+			break;
+		}
 
-        char cell = game->cfg->map[map_y][map_x];
-        if (cell == '1')
-        {
-            hit = 1;
-            is_door = 0;
-        }
-        else if (cell == 'D')
-        {
-            hit = 1;
-            is_door = 1;
-        }
-    }
+		char cell = game->cfg->map[map_y][map_x];
+		if (cell == '1')
+		{
+			hit = 1;
+			is_door = 0;
+		}
+		else if (cell == 'D')
+		{
+			hit = 1;
+			is_door = 1;
+		}
+	}
 
-    double perp_wall_dist;
-    if (side_local == 0)
-        perp_wall_dist = (map_x - game->pos_x + (1 - step_x) / 2.0) / ray_dir_x;
-    else
-        perp_wall_dist = (map_y - game->pos_y + (1 - step_y) / 2.0) / ray_dir_y;
+	double perp_wall_dist;
+	if (side_local == 0)
+		perp_wall_dist = (map_x - game->pos_x + (1 - step_x) / 2.0) / ray_dir_x;
+	else
+		perp_wall_dist = (map_y - game->pos_y + (1 - step_y) / 2.0) / ray_dir_y;
 
-    if (perp_wall_dist <= 0)
-        perp_wall_dist = 0.0001;
+	if (perp_wall_dist <= 0)
+		perp_wall_dist = 0.0001;
 
-    t_ray ray;
-    ray.perp_dist = perp_wall_dist;
-    ray.side_hit = side_local;
-    ray.is_door = is_door;
-    return ray;
+	t_ray ray;
+	ray.perp_dist = perp_wall_dist;
+	ray.side_hit = side_local;
+	ray.is_door = is_door;
+	return ray;
 }*/
 
-t_ray cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
+static void	perform_dda(t_game *game, t_dda *dda, int *side, int *is_door)
 {
-    int map_x = (int)game->pos_x;
-    int map_y = (int)game->pos_y;
+	int	hit;
+	int	map_w;
+	int	map_h;
 
-    if (fabs(ray_dir_x) < 1e-6)
-        ray_dir_x = 1e-6;
-    if (fabs(ray_dir_y) < 1e-6)
-        ray_dir_y = 1e-6;
+	map_h = 0;
+	while (game->cfg->map[map_h])
+		map_h++;
+	map_w = ft_strlen(game->cfg->map[0]);
+	hit = 0;
+	while (!hit)
+	{
+		step_ray(dda, side);
+		if (dda->map_x < 0 || dda->map_x >= map_w
+			|| dda->map_y < 0 || dda->map_y >= map_h)
+			break ;
+		check_hit(game, dda, is_door, &hit);
+	}
+}
 
-    double delta_dist_x;
-    double delta_dist_y;
+t_ray	cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
+{
+	t_dda	dda;
+	t_ray	ray;
+	int		side;
+	int		is_door;
 
-    if (ray_dir_x == 0)
-        delta_dist_x = 1e30;
-    else
-        delta_dist_x = fabs(1 / ray_dir_x);
-
-    if (ray_dir_y == 0)
-        delta_dist_y = 1e30;
-    else
-        delta_dist_y = fabs(1 / ray_dir_y);
-
-    double side_dist_x;
-    double side_dist_y;
-    int step_x;
-    int step_y;
-
-    if (ray_dir_x < 0)
-    {
-        step_x = -1;
-        side_dist_x = (game->pos_x - map_x) * delta_dist_x;
-    }
-    else
-    {
-        step_x = 1;
-        side_dist_x = (map_x + 1.0 - game->pos_x) * delta_dist_x;
-    }
-
-    if (ray_dir_y < 0)
-    {
-        step_y = -1;
-        side_dist_y = (game->pos_y - map_y) * delta_dist_y;
-    }
-    else
-    {
-        step_y = 1;
-        side_dist_y = (map_y + 1.0 - game->pos_y) * delta_dist_y;
-    }
-
-    int hit = 0;
-    int side_local = 0;
-    int is_door = 0;
-
-    int map_height = 0;
-    while (game->cfg->map[map_height])
-        map_height++;
-    int map_width = ft_strlen(game->cfg->map[0]);
-
-    while (!hit)
-    {
-        if (side_dist_x < side_dist_y)
-        {
-            side_dist_x += delta_dist_x;
-            map_x += step_x;
-            side_local = 0;
-        }
-        else
-        {
-            side_dist_y += delta_dist_y;
-            map_y += step_y;
-            side_local = 1;
-        }
-
-        if (map_x < 0 || map_x >= map_width || map_y < 0 || map_y >= map_height)
-            break;
-
-        char cell = game->cfg->map[map_y][map_x];
-        if (cell == '1')
-        {
-            hit = 1;
-            is_door = 0;
-        }
-        else if (cell == 'D')
-        {
-            hit = 1;
-            is_door = 1;
-        }
-    }
-
-    double perp_wall_dist;
-    if (side_local == 0)
-        perp_wall_dist = (map_x - game->pos_x + (1 - step_x) / 2.0) / ray_dir_x;
-    else
-        perp_wall_dist = (map_y - game->pos_y + (1 - step_y) / 2.0) / ray_dir_y;
-
-    if (perp_wall_dist < 0.0001)
-        perp_wall_dist = 0.0001;
-
-    t_ray ray;
-    ray.perp_dist = perp_wall_dist;
-    ray.side_hit = side_local;
-    ray.is_door = is_door;
-    return ray;
+	dda.map_x = (int)game->pos_x;
+	dda.map_y = (int)game->pos_y;
+	init_deltas(ray_dir_x, ray_dir_y, &dda.delta_x, &dda.delta_y);
+	init_steps(game, ray_dir_x, ray_dir_y, &dda);
+	perform_dda(game, &dda, &side, &is_door);
+	if (side == 0)
+		ray.perp_dist = (dda.map_x - game->pos_x + (1 - dda.step_x) / 2.0)
+			/ ray_dir_x;
+	else
+		ray.perp_dist = (dda.map_y - game->pos_y + (1 - dda.step_y) / 2.0)
+			/ ray_dir_y;
+	if (ray.perp_dist < 0.0001)
+		ray.perp_dist = 0.0001;
+	ray.side_hit = side;
+	ray.is_door = is_door;
+	return (ray);
 }

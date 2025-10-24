@@ -12,12 +12,18 @@ SRCS= src/main.c \
 	  src/parsing/map/map_utils2.c \
 	  src/render/door.c\
 	  src/render/hooks.c\
-	  src/render/minimap.c\
+	  src/render/minimap/minimap.c\
+	  src/render/minimap/minimap_circle.c\
+	  src/render/minimap/minimap_dir.c\
+	  src/render/minimap/minimap_player.c\
+	  src/render/minimap/minimap_utils.c\
 	  src/render/movements.c\
 	  src/render/raycasting.c\
+	  src/render/raycasting_utils.c \
 	  src/render/render.c\
 	  src/render/init_game.c \
 	  gnl/get_next_line.c \
+	
 
 NAME = cub3d
 CC = cc
