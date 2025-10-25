@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/25 14:24:20 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/26 01:04:51 by gmaccha-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,22 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
+typedef struct s_drawinfo
+{
+	int		draw_start;
+	int		draw_end;
+	int		line_height;
+	int		tex_x;
+	double	wall_x;
+	int		tex_num;
+}	t_drawinfo;
+
+typedef struct s_raydir
+{
+	double	x;
+	double	y;
+}	t_raydir;
+
 int		validate_map(char *map);
 int		validate_file(char *filename);
 int		check_open(char *path);
@@ -205,5 +221,11 @@ void	draw_minimap_dir(t_game *game, int cx, int cy);
 void	mini_put_pixel(t_img *img, int x, int y, int color);
 int		get_cell_color(t_game *game, int map_x, int map_y);
 int		is_valid_cell(t_game *game, double x, double y);
+void	draw_column(t_game *game, t_ray *ray, int x, t_raydir dir);
+void	put_pixel(t_img *img, int x, int y, int color);
+void	draw_background(t_img *img, int ceiling, int floor);
+void	render_frame(t_game *game);
+int		get_tex_num(t_ray *ray, double ray_dir_x, double ray_dir_y);
+int		clamp_tex_coord(int value, int max);
 
 #endif

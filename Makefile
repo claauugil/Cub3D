@@ -14,8 +14,11 @@ SRCS= src/main.c \
 	  src/render/hooks.c\
 	  src/render/movements.c\
 	  src/render/movements_2.c\
-	  src/render/render.c\
 	  src/render/init_game.c \
+	  src/render/render_background.c\
+	  src/render/render_frame.c\
+	  src/render/render_utils.c\
+	  src/render/render_wall.c\
 	  src/render/minimap/minimap.c\
 	  src/render/minimap/minimap_circle.c\
 	  src/render/minimap/minimap_dir.c\
