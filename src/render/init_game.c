@@ -6,7 +6,7 @@
 /*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/25 13:41:20 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/25 14:21:50 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,39 @@ void	set_player_direction(t_game *game, char dir)
 	set_player_dir_values(game, values);
 }
 
-void	load_textures(t_game *game)
+static int	load_single_texture(t_game *game, int index, char *path)
+{
+	game->tex[index].img = mlx_xpm_file_to_image(game->mlx, path,
+			&game->tex[index].width, &game->tex[index].height);
+	if (!game->tex[index].img)
+		return (ft_print_error("Error: texture load failed"));
+	game->tex[index].addr = mlx_get_data_addr(game->tex[index].img,
+			&game->tex[index].bpp,
+			&game->tex[index].line_len,
+			&game->tex[index].endian);
+	return (0);
+}
+
+int	load_textures(t_game *game)
 {
 	t_config	*cfg;
 	int			i;
+	char		*paths[5];
 
 	cfg = game->cfg;
+	paths[0] = cfg->tex_no;
+	paths[1] = cfg->tex_so;
+	paths[2] = cfg->tex_we;
+	paths[3] = cfg->tex_ea;
+	paths[4] = "./textures/door.xpm";
 	i = 0;
-	char *paths[5] = {
-		cfg->tex_no,
-		cfg->tex_so,
-		cfg->tex_we,
-		cfg->tex_ea,
-		"./textures/door.xpm"
-	};
 	while (i < 5)
 	{
-		game->tex[i].img = mlx_xpm_file_to_image(game->mlx, paths[i],
-				&game->tex[i].width, &game->tex[i].height);
-		if (!game->tex[i].img)
-		{
-			ft_print_error("Error: texture load failed");
-			exit(1);
-		}
-		game->tex[i].addr = mlx_get_data_addr(game->tex[i].img,
-				&game->tex[i].bpp, &game->tex[i].line_len,
-				&game->tex[i].endian);
+		if (load_single_texture(game, i, paths[i]))
+			return (-1);
 		i++;
 	}
+	return (0);
 }
 
 int	init_game(t_game *game, t_config *cfg)
@@ -92,6 +97,7 @@ int	init_game(t_game *game, t_config *cfg)
 	mlx_hook(game->win, KeyRelease, KeyReleaseMask, handle_key_release, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop_hook(game->mlx, ft_update, game);
-	load_textures(game);
+	if (load_textures(game) == -1)
+		return (-1);
 	return (0);
 }
