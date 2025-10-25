@@ -47,7 +47,7 @@ int	check_map(t_config *cfg)
 			{
 				if (!is_surrounded(cfg->map, i, j))
 					return (ft_print_error("Error\nMap not closed or with "
-						 "invalid spaces"));
+							"invalid spaces"));
 			}
 			j++;
 		}

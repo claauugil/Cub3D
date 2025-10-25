@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   handle_map_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 16:17:57 by claudia          ###   ########.fr       */
+/*   Created: 2025/10/25 13:37:19 by cgil              #+#    #+#             */
+/*   Updated: 2025/10/25 13:37:21 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	set_player_if_found(char c, int i, int j, t_config *cfg)
+{
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	{
+		cfg->player_y = i;
+		cfg->player_x = j;
+		cfg->player_dir = c;
+		return (1);
+	}
+	return (0);
+}
 
 int	validate_single_player(char **lines, t_config *cfg)
 {
@@ -25,14 +37,9 @@ int	validate_single_player(char **lines, t_config *cfg)
 		j = 0;
 		while (lines[i][j])
 		{
-			if (lines[i][j] == 'N' || lines[i][j] == 'S'
-			|| lines[i][j] == 'W' || lines[i][j] == 'E')
-			{
-				cfg->player_y = i;
-				cfg->player_x = j;
-				cfg->player_dir = lines[i][j];
-				player++;	
-			}
+			player += set_player_if_found(lines[i][j], i, j, cfg);
+			if (player > 1)
+				return (ft_print_error("Error: more than one player found"));
 			j++;
 		}
 		i++;
@@ -64,63 +71,6 @@ int	validate_map_chars(char **map_lines)
 		}
 		i++;
 	}
-	return (0);
-}
-
-int	allocate_map(t_config *cfg)
-{
-	int	i;
-	int	j;
-
-	if (!cfg || cfg->map_height <= 0 || cfg->map_width <= 0)
-		return (-1);
-	cfg->map = malloc(sizeof(char *) * (cfg->map_height + 1));
-	if (!cfg->map)
-		return (-1);
-	i = 0;
-	while (i < cfg->map_height)
-	{
-		cfg->map[i] = malloc(cfg->map_width + 1);
-		if (!cfg->map[i])
-		{
-			while (i-- > 0)
-				free(cfg->map[i]);
-			free(cfg->map);
-			cfg->map = NULL;
-			return (-1);
-		}
-		j = 0;
-		while (j < cfg->map_width)
-		{
-			cfg->map[i][j] = ' ';
-			j++;
-		}
-		cfg->map[i][cfg->map_width] = '\0';
-		i++;
-	}
-	cfg->map[cfg->map_height] = NULL;
-	return (0);
-}
-
-int	fill_map(char **map_lines, t_config *cfg)
-{
-	int	i;
-	int	j;
-
-	if (!cfg || !cfg->map || !map_lines)
-		return (-1);
-	i = 0;
-	while (i < cfg->map_height && map_lines[i])
-	{
-		j = 0;
-		while (map_lines[i][j] && j < cfg->map_width)
-		{
-			cfg->map[i][j] = map_lines[i][j];
-			j++;
-		}
-		i++;
-	}
-	cfg->map[i] = NULL;
 	return (0);
 }
 

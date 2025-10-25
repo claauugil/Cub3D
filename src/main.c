@@ -30,7 +30,6 @@ int	main(int ac, char **av)
 	}
 	if (init_game(&game, &cfg) == -1)
 		return (-1);
-	printf("%c", cfg.player_dir);
 	render_frame(&game);
 	mlx_loop(game.mlx);
 	free_cfg(&cfg);
