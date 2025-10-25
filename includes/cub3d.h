@@ -6,7 +6,7 @@
 /*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/25 11:14:39 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/25 12:36:02 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define BUFFER_SIZE 600
 #endif
 
-# define WIN_W 640
-# define WIN_H 480
+# define WIN_W 750
+# define WIN_H 620
 
 # define MOVE_SPEED 0.03
 # define ROT_SPEED 0.03
@@ -85,6 +85,13 @@ typedef struct s_keys
 	int	right;
 }	t_keys;
 
+typedef struct s_dir_vals
+{
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_dir_vals;
 typedef struct s_game
 {
 	void		*mlx;
