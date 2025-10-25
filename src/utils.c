@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 09:59:05 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 10:35:39 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/25 11:34:26 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_split(char **array)
 	free(array);
 }
 
-void free_cfg(t_config *cfg)
+void	free_cfg(t_config *cfg)
 {
 	int	i;
 
