@@ -3,19 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 18:59:49 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 11:45:30 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/25 13:33:15 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static void	free_map_partial(char **map, int rows);
-// static char	*allocate_row(int width);
+static char	*allocate_row(int width)
+{
+	int		j;
+	char	*row;
 
-/*int	allocate_map(t_config *cfg)
+	row = malloc(width + 1);
+	if (!row)
+		return (NULL);
+	j = 0;
+	while (j < width)
+	{
+		row[j] = ' ';
+		j++;
+	}
+	row[width] = '\0';
+	return (row);
+}
+
+static void	free_map_partial(char **map, int rows)
+{
+	while (rows-- > 0)
+		free(map[rows]);
+	free(map);
+}
+
+int	allocate_map(t_config *cfg)
 {
 	int	i;
 
@@ -60,29 +82,4 @@ int	fill_map(char **map_lines, t_config *cfg)
 	}
 	cfg->map[i] = NULL;
 	return (0);
-}*/
-
-/*static void	free_map_partial(char **map, int rows)
-{
-	while (rows-- > 0)
-		free(map[rows]);
-	free(map);
 }
-
-static char	*allocate_row(int width)
-{
-	int		j;
-	char	*row;
-
-	row = malloc(width + 1);
-	if (!row)
-		return (NULL);
-	j = 0;
-	while (j < width)
-	{
-		row[j] = ' ';
-		j++;
-	}
-	row[width] = '\0';
-	return (row);
-}*/

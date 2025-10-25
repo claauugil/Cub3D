@@ -13,6 +13,7 @@ SRCS= src/main.c \
 	  src/render/door.c\
 	  src/render/hooks.c\
 	  src/render/movements.c\
+	  src/render/movements_2.c\
 	  src/render/render.c\
 	  src/render/init_game.c \
 	  src/render/minimap/minimap.c\

@@ -6,28 +6,27 @@
 /*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/25 11:14:39 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/25 14:24:20 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 600
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 600
+# endif
 
-# define WIN_W 640
-# define WIN_H 480
+# define WIN_W 750
+# define WIN_H 620
 
 # define MOVE_SPEED 0.03
 # define ROT_SPEED 0.03
 
 # define TILE_SIZE 8
 # define MINIMAP_SIZE 150
-# define MINIMAP_RADIUS (MINIMAP_SIZE / 2)
+# define MINIMAP_RADIUS 75
 # define PLAYER_SIZE 4
-
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -85,6 +84,13 @@ typedef struct s_keys
 	int	right;
 }	t_keys;
 
+typedef struct s_dir_vals
+{
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_dir_vals;
 typedef struct s_game
 {
 	void		*mlx;
@@ -153,13 +159,10 @@ void	free_cfg(t_config *cfg);
 int		check_color(char *line, t_config *cfg);
 int		handle_map(char **lines, t_config *cfg, int map_start);
 int		check_headers(char *line, t_config *cfg, int *headers);
-///////////////gnl///////////////////////////////////////////////////
 char	*get_next_line(int fd);
 char	*concat_line(char **store, char *buffer);
 char	*tidy_lines(char **store);
 int		handle_errors(char **store, char *buffer, ssize_t bytes_read);
-///////////////gnl///////////////////////////////////////////////////
-/////////////////// map /////////////////////////////
 int		allocate_map(t_config *cfg);
 int		count_map_size(char **lines, t_config *cfg);
 int		validate_single_player(char **lines, t_config *cfg);
@@ -175,7 +178,7 @@ void	render_frame(t_game *game);
 void	draw_background(t_img *img, int ceiling, int floor);
 void	put_pixel(t_img *img, int x, int y, int color);
 t_ray	cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y);
-void	load_textures(t_game *game);
+int		load_textures(t_game *game);
 void	move_forward(t_game *game);
 void	move_backward(t_game *game);
 void	strafe_left(t_game *game);
@@ -188,8 +191,6 @@ int		ft_update(t_game *game);
 int		close_window(t_game *game);
 void	draw_minimap(t_game *game);
 void	toggle_door(t_game *game);
-
-//raycasting_utils
 int		check_hit(t_game *game, t_dda *dda, int *is_door,
 			int *hit);
 void	step_ray(t_dda *dda, int *side);
@@ -197,12 +198,12 @@ void	init_steps(t_game *game, double ray_dir_x, double ray_dir_y,
 			t_dda *dda);
 void	init_deltas(double ray_dir_x, double ray_dir_y,
 			double *delta_x, double *delta_y);
-//minimap
 void	draw_minimap(t_game *game);
 void	draw_minimap_circle(t_game *game, int cx, int cy);
 void	draw_minimap_player(t_game *game, int cx, int cy);
 void	draw_minimap_dir(t_game *game, int cx, int cy);
 void	mini_put_pixel(t_img *img, int x, int y, int color);
 int		get_cell_color(t_game *game, int map_x, int map_y);
+int		is_valid_cell(t_game *game, double x, double y);
 
 #endif
