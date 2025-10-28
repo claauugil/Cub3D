@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/22 10:38:56 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/27 16:37:39 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ int	check_texture(char *line, t_config *cfg)
 	close(fd);
 	ret = save_textures(cfg, split[0], split[1]);
 	free_split(split);
+	if (ret == -1)
+		return (free_and_error(NULL, "Error\nDuplicate texture identifier"));
 	return ((ret));
 }

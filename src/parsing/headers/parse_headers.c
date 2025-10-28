@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:30:27 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 10:41:16 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/27 16:30:06 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	handle_headers(char **lines, t_config *cfg, int *map_start)
 		i++;
 	}
 	if (headers != 6)
-		return (ft_print_error("Error\nHeaders missing"));
+		return (ft_print_error("Error\nInvalid headers"));
 	if (*map_start == -1)
 		return (ft_print_error("Error\nNo map found"));
 	return (0);
