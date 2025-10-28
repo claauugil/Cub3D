@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/25 14:21:50 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/28 12:46:39 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	set_player_direction(t_game *game, char dir)
 		values = (t_dir_vals){0, -1, 0.66, 0};
 	else if (dir == 'S')
 		values = (t_dir_vals){0, 1, -0.66, 0};
-	else if (dir == 'W')
-		values = (t_dir_vals){1, 0, 0, 0.66};
 	else if (dir == 'E')
+		values = (t_dir_vals){1, 0, 0, 0.66};
+	else if (dir == 'W')
 		values = (t_dir_vals){-1, 0, 0, -0.66};
 	else
 	{
