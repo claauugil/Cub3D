@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:48:13 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/25 11:46:39 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/28 16:59:07 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	close_window(t_game *game)
+/*int	close_window(t_game *game)
 {
 	if (!game)
 		exit(0);
@@ -21,6 +21,34 @@ int	close_window(t_game *game)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	free_cfg(game->cfg);
+	exit(0);
+	return (0);
+}*/
+
+int	close_window(t_game *game)
+{
+	int	i;
+
+	if (!game)
+		exit(0);
+	i = 0;
+	while (i < 5)
+	{
+		if (game->tex[i].img)
+			mlx_destroy_image(game->mlx, game->tex[i].img);
+		i++;
+	}
+	if (game->img.img)
+		mlx_destroy_image(game->mlx, game->img.img);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->cfg)
+		free_cfg(game->cfg);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	exit(0);
 	return (0);
 }
