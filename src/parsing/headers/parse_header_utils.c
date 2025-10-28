@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:09:38 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 10:39:57 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/28 10:46:42 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,31 @@ static int	validate_rgb_range(int rgb[3])
 	return (0);
 }
 
+static int	is_valid_number(char *s)
+{
+	int	i;
+	int	has_digit;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i] == ' ')
+		i++;
+	has_digit = 0;
+	while (s[i] && ft_isdigit(s[i]))
+	{
+		has_digit = 1;
+		i++;
+	}
+	if (!has_digit)
+		return (0);
+	while (s[i] == ' ')
+		i++;
+	if (s[i] != '\0')
+		return (0);
+	return (1);
+}
+
 static int	parse_color_line(char *line, int rgb[3])
 {
 	char	**split;
@@ -72,6 +97,8 @@ static int	parse_color_line(char *line, int rgb[3])
 	i = 0;
 	while (i < 3)
 	{
+		if (!is_valid_number(split[i]))
+			return (free_and_error(split, "Error: Invalid RGB value"));
 		rgb[i] = ft_atoi(split[i]);
 		i++;
 	}
