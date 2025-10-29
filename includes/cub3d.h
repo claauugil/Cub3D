@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/26 01:04:51 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:17:57 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_game
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
-	t_tex		tex[5];
+	t_tex		tex[4];
 	t_keys		keys;
 
 }	t_game;
@@ -112,7 +112,6 @@ typedef struct s_ray
 {
 	double	perp_dist;
 	int		side_hit;
-	int		is_door;
 }	t_ray;
 
 typedef struct s_dda
@@ -206,9 +205,7 @@ int		handle_key_release(int keycode, t_game *game);
 int		ft_update(t_game *game);
 int		close_window(t_game *game);
 void	draw_minimap(t_game *game);
-void	toggle_door(t_game *game);
-int		check_hit(t_game *game, t_dda *dda, int *is_door,
-			int *hit);
+int		check_hit(t_game *game, t_dda *dda, int *hit);
 void	step_ray(t_dda *dda, int *side);
 void	init_steps(t_game *game, double ray_dir_x, double ray_dir_y,
 			t_dda *dda);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 02:15:09 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/24 02:15:12 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:13:06 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ int	get_cell_color(t_game *game, int map_x, int map_y)
 	cell = game->cfg->map[map_y][map_x];
 	if (cell == '1')
 		return (0x555555);
-	if (cell == 'D')
-		return (0x00FF00);
 	return (0xCCCCCC);
 }

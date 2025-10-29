@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 18:30:24 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/26 01:05:40 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:16:12 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	get_tex_num(t_ray *ray, double ray_dir_x, double ray_dir_y)
 {
-	if (ray->is_door)
-		return (4);
 	if (ray->side_hit == 0)
 	{
 		if (ray_dir_x > 0)
