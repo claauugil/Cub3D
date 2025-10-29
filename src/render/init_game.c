@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:15:12 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/28 12:46:39 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/29 12:18:29 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,15 @@ int	load_textures(t_game *game)
 {
 	t_config	*cfg;
 	int			i;
-	char		*paths[5];
+	char		*paths[4];
 
 	cfg = game->cfg;
 	paths[0] = cfg->tex_no;
 	paths[1] = cfg->tex_so;
 	paths[2] = cfg->tex_we;
 	paths[3] = cfg->tex_ea;
-	paths[4] = "./textures/door.xpm";
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		if (load_single_texture(game, i, paths[i]))
 			return (-1);

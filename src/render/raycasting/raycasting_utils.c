@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 01:53:13 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/25 11:21:47 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/29 12:14:21 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void	step_ray(t_dda *dda, int *side)
 	}
 }
 
-int	check_hit(t_game *game, t_dda *dda, int *is_door,
-						int *hit)
+int	check_hit(t_game *game, t_dda *dda, int *hit)
 {
 	char	cell;
 
@@ -79,13 +78,6 @@ int	check_hit(t_game *game, t_dda *dda, int *is_door,
 	if (cell == '1')
 	{
 		*hit = 1;
-		*is_door = 0;
-		return (1);
-	}
-	if (cell == 'D')
-	{
-		*hit = 1;
-		*is_door = 1;
 		return (1);
 	}
 	return (0);

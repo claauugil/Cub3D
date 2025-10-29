@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:48:44 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/25 13:42:04 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/29 12:16:44 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_perform_dda(t_game *game, t_dda *dda, int *side, int *is_door)
+static void	ft_perform_dda(t_game *game, t_dda *dda, int *side)
 {
 	int	hit;
 	int	map_w;
@@ -29,7 +29,7 @@ static void	ft_perform_dda(t_game *game, t_dda *dda, int *side, int *is_door)
 		if (dda->map_x < 0 || dda->map_x >= map_w
 			|| dda->map_y < 0 || dda->map_y >= map_h)
 			break ;
-		check_hit(game, dda, is_door, &hit);
+		check_hit(game, dda, &hit);
 	}
 }
 
@@ -38,13 +38,12 @@ t_ray	cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
 	t_dda	dda;
 	t_ray	ray;
 	int		side;
-	int		is_door;
 
 	dda.map_x = (int)game->pos_x;
 	dda.map_y = (int)game->pos_y;
 	init_deltas(ray_dir_x, ray_dir_y, &dda.delta_x, &dda.delta_y);
 	init_steps(game, ray_dir_x, ray_dir_y, &dda);
-	ft_perform_dda(game, &dda, &side, &is_door);
+	ft_perform_dda(game, &dda, &side);
 	if (side == 0)
 		ray.perp_dist = (dda.map_x - game->pos_x + (1 - dda.step_x) / 2.0)
 			/ ray_dir_x;
@@ -54,6 +53,5 @@ t_ray	cast_single_ray(t_game *game, double ray_dir_x, double ray_dir_y)
 	if (ray.perp_dist < 0.0001)
 		ray.perp_dist = 0.0001;
 	ray.side_hit = side;
-	ray.is_door = is_door;
 	return (ray);
 }
