@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_dir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmaccha- <gmaccha-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 02:17:30 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/24 02:17:59 by gmaccha-         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:47:54 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	draw_minimap_dir(t_game *game, int cx, int cy)
 	init_dir_vars(game, cx, cy, &l);
 	while (1)
 	{
-		mini_put_pixel(&game->img, cx, cy, 0xFF0000);
+		mini_put_pixel(&game->img, cx, cy, 0x39FF14);
 		if (cx == l.end_x && cy == l.end_y)
 			break ;
 		e2 = 2 * l.err;
