@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 02:15:09 by gmaccha-          #+#    #+#             */
-/*   Updated: 2025/10/29 12:50:06 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/29 18:18:11 by cgil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ int	get_cell_color(t_game *game, int map_x, int map_y)
 		return (0x7E7E7E);
 	return (0x000000);
 }
-
