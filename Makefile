@@ -27,7 +27,7 @@ SRCS= src/main.c \
 	  src/render/raycasting/raycasting_utils.c \
 	  gnl/get_next_line.c \
 
-NAME = cub3d
+NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 PINK = \033[38;2;245;166;221m

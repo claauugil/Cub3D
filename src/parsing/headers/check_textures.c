@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:54:27 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/27 16:37:39 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/30 10:42:15 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_texture(char *line, t_config *cfg)
 	if (fd < 0)
 	{
 		free_split(split);
-		return (-1);
+		return (ft_print_error("Error\nTexture doesn't exist"));
 	}
 	close(fd);
 	ret = save_textures(cfg, split[0], split[1]);
