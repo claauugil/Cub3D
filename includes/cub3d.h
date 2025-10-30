@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:13:59 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/29 12:17:57 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/30 11:54:32 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define WIN_W 750
 # define WIN_H 620
 
-# define MOVE_SPEED 0.03
+# define MOVE_SPEED 0.0
 # define ROT_SPEED 0.03
 
 # define TILE_SIZE 8
