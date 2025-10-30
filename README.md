@@ -1,8 +1,9 @@
 # 🧊 cub3D
 
-**RayCaster using miniLibX**  
-Proyecto inspirado en el legendario **Wolfenstein 3D**, considerado el primer *First Person Shooter* de la historia.  
-El objetivo es crear una representación 3D "realista" del interior de un laberinto utilizando **raycasting**.
+**RayCaster con miniLibX**
+
+Proyecto inspirado en el legendario Wolfenstein 3D (1992), considerado el primer First Person Shooter de la historia.
+El objetivo es crear una representación 3D “realista” del interior de un laberinto usando **raycasting**.
 
 ---
 
@@ -76,8 +77,10 @@ Cada archivo .cub contiene los elementos siguientes:
 | C | Color del techo en formato R,G,B |
 | Mapa | Compuesto por 0, 1, N, S, E, W |
 
-📌 El mapa debe estar cerrado por muros (1), y debe ser el último elemento del archivo.  
+📌 El mapa debe estar cerrado por muros (1) y ser el último elemento del archivo.
 📌 Los espacios dentro del mapa son válidos y deben manejarse correctamente.
+📌 Ante cualquier error, el programa debe mostrar:
+Error\n seguido de un mensaje descriptivo.
 
 ---
 
@@ -90,7 +93,7 @@ Cada archivo .cub contiene los elementos siguientes:
 
 ---
 
-## 🚀 Funcionalidades implementadas
+## 🚀 Características
 
 - ✅ Lectura y validación de archivos .cub
 - ✅ Carga de texturas para cada orientación
@@ -106,7 +109,7 @@ Cada archivo .cub contiene los elementos siguientes:
 
 (Solo evaluados si la parte obligatoria está perfecta)
 
-- 🗺️ Minimap dinámico
+- 🧭 Minimap dinámico
 - 🚪 Colisiones con muros
 
 ---
