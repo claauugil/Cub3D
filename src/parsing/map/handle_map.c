@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:14:40 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/25 13:31:48 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/30 10:37:27 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handle_map(char **lines, t_config *cfg, int map_start)
 	if (validate_single_player(lines + map_start, cfg) == -1)
 		return (-1);
 	if (count_map_size(lines + map_start, cfg) == -1)
-		return (-1);
+		return (ft_print_error("Error\nEmpty map"));
 	if (allocate_map(cfg) == -1)
 		return (-1);
 	if (fill_map(lines + map_start, cfg) == -1)

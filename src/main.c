@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cgil <cgil@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:33:22 by cgil              #+#    #+#             */
-/*   Updated: 2025/10/25 12:50:21 by cgil             ###   ########.fr       */
+/*   Updated: 2025/10/30 10:23:52 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (ft_print_error("Error\nUse as: ./cub3d <map.cub>"));
 	if (validate_map(av[1]) == -1)
-		return (ft_print_error("Error\nFile must have .cub extension"));
+		return (-1);
 	if (parse_cub(av[1], &cfg) == -1)
 	{
 		free_cfg(&cfg);

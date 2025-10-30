@@ -6,7 +6,7 @@
 /*   By: claudia <claudia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:17:54 by claudia           #+#    #+#             */
-/*   Updated: 2025/10/22 13:37:23 by claudia          ###   ########.fr       */
+/*   Updated: 2025/10/30 10:28:31 by claudia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int	check_open(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Error: couldn't open file\n");
 		return (-1);
-	}
 	close(fd);
 	return (0);
 }
@@ -42,11 +39,8 @@ int	check_open(char *path)
 int	validate_map(char *map)
 {
 	if (validate_file(map) == -1)
-		return (-1);
+		return (ft_print_error("Error\nFile must have .cub extension"));
 	if (check_open(map) == -1)
-	{
-		printf("Error: could not open file\n");
-		return (-1);
-	}
+		return (ft_print_error("Error:\nCould not open file"));
 	return (0);
 }
